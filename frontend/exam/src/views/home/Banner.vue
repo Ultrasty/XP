@@ -10,10 +10,10 @@
       </p>
 
       <div class="button-wrapper">
-        <a href="#">
+        <a href="javascript:void(0)" @click="goAnchor('#page1-wrapper')">
           <a-button type="primary">预览</a-button>
         </a>
-        <a @click="$router.push({ name: 'docs' })">
+        <a @click="$router.push({ path:'/list/exam-card' })">
           <a-button style="margin: 0 16px;">开始使用</a-button>
         </a>
       </div>
@@ -30,8 +30,22 @@
 
 <script>
 export default {
-  name: 'Banner'
+  name: 'Banner',
+  methods: {
+    /* goAnchor (selector) {
+        var anchor = this.$el.querySelector (selector)// 参数为要跳转到的元素id
+        document.body.scrollTop = anchor.offsetTop// chrome
+        document.documentElement.scrollTop = anchor.offsetTop// firefox
+    } */
+    goAnchor (selector) {
+      const anchorEle = document.querySelector(selector);
+      if(anchorEle){
+        anchorEle.scrollIntoView(true);
+      }
+    }
+  }
 }
+
 </script>
 
 <style lang="less">

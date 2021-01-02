@@ -93,12 +93,7 @@ module.exports = {
     devServer: {
         // development server port 8000
         port: 8080,
-        host: '0.0.0.0',
-        public: '101.132.159.218:8080',
-        https: false,
-        hotOnly: false,
-        disableHostCheck: true,
-        open: true, // 配置自动启动浏览器
+        public: '0.0.0.0',
         proxy: 'http://101.132.159.218:9527'
     },
 
