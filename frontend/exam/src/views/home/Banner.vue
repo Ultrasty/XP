@@ -1,3 +1,4 @@
+
 <template>
   <div class="banner-wrapper">
     <div class="banner-title-wrapper">
@@ -8,7 +9,9 @@
       <p style="opacity: 1; transform: translate(0px, 0px);">
         <span>XP在线考试系统 </span>
       </p>
-
+      <p style="opacity: 1; transform: translate(0px, 0px);">
+        <span>极限开发 </span>
+      </p>
       <div class="button-wrapper">
         <a href="javascript:void(0)" @click="goAnchor('#page1-wrapper')">
           <a-button type="primary">预览</a-button>
@@ -29,14 +32,10 @@
 </template>
 
 <script>
+
 export default {
   name: 'Banner',
   methods: {
-    /* goAnchor (selector) {
-        var anchor = this.$el.querySelector (selector)// 参数为要跳转到的元素id
-        document.body.scrollTop = anchor.offsetTop// chrome
-        document.documentElement.scrollTop = anchor.offsetTop// firefox
-    } */
     goAnchor (selector) {
       const anchorEle = document.querySelector(selector);
       if(anchorEle){
