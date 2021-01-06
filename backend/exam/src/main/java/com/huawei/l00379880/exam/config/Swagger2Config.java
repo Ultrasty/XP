@@ -51,10 +51,10 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("online exam by springboot")
-                .description("在线考试系统 by 梁山广 at 2020")
-                .termsOfServiceUrl("https://github.com/19920625lsg/spring-boot-online-exam")
+                .description("在线考试系统 by 极限开发 at 2020-2021")
+                .termsOfServiceUrl("https://github.com/Ultrasty/XP")
                 .version("1.0")
-                .contact(new Contact("liangshanguang", "https://github.com/19920625lsg/spring-boot-online-exam", "liangshanguang2@gmail.com"))
+                .contact(new Contact("ExtremeDevelopment", "https://github.com/Ultrasty/XP", "ty@imsty.cn"))
                 .build();
     }
 }
