@@ -122,21 +122,12 @@ export default {
           })
         }
       })
-    CountDown()
   },
   methods: {
     // 从全局变量中获取用户昵称和头像,
     ...mapGetters(['nickname', 'avatar']),
     //倒计时函数
-    CountDown () {
-      var time = 1800; //30分钟换算成1800秒
-        setInterval(function() {
-            time = time - 1;
-            var minute = parseInt(time / 60);
-            var second = parseInt(time % 60);
-            this.countdown = minute + "分" + second + "秒";
-        }, 1000);
-    },
+    
     getQuestionDetail (questionId) {
       // 问题切换时从后端拿到问题详情，渲染到前端content中
       const that = this
