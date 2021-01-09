@@ -8,7 +8,7 @@
         <span style="font-size:15px;">{{ examDetail.exam.examDescription }} </span>
       </span>
       <span style="float: right;">
-        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时</span>
+        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时:{{countdown}} </span>
         <a-button type="danger" ghost style="margin-right: 60px;" @click="finishExam()">交卷</a-button>
         <a-avatar class="avatar" size="small" :src="avatar()"/>
         <span style="margin-left: 12px">{{ nickname() }}</span>
@@ -87,6 +87,8 @@ export default {
     return {
       // 考试详情对象
       examDetail: {},
+      //倒计时
+      countdown: '',
       // 用户做过的问题都放到这个数组中，键为问题id, 值为currentQuestion(其属性answers属性用于存放答案选项地id或ids),，用于存放用户勾选的答案
       answersMap: {},
       // 当前用户的问题
@@ -120,10 +122,21 @@ export default {
           })
         }
       })
+    CountDown()
   },
   methods: {
     // 从全局变量中获取用户昵称和头像,
     ...mapGetters(['nickname', 'avatar']),
+    //倒计时函数
+    CountDown () {
+      var time = 1800; //30分钟换算成1800秒
+        setInterval(function() {
+            time = time - 1;
+            var minute = parseInt(time / 60);
+            var second = parseInt(time % 60);
+            this.countdown = minute + "分" + second + "秒";
+        }, 1000);
+    },
     getQuestionDetail (questionId) {
       // 问题切换时从后端拿到问题详情，渲染到前端content中
       const that = this

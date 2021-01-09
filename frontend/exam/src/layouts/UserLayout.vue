@@ -17,12 +17,11 @@
 
       <div class="footer">
         <div class="links">
-          <a href="https://github.com/19920625lsg/spring-boot-online-exam" target="_blank">代码仓</a>
-          <a href="https://19920625lsg.github.io" target="_blank">关于我</a>
-          <a href="mailto:liangshanguang2@gmail.com">联系我</a>
+          <a href="https://github.com/Ultrasty/XP" target="_blank">代码仓</a>
+          <a href="https://github.com/Ultrasty" target="_blank">关于我</a>
         </div>
         <div class="copyright">
-          Copyright &copy; 2020 Liang Shan Guang
+          Copyright &copy; 2020 XP
         </div>
       </div>
     </div>

@@ -98,8 +98,8 @@
             <p v-html="currentQuestion.description"></p>
           </div>
         </a-layout-content>
-        <a-layout-footer :style="{ textAlign: 'center' }">
-          Spting Boot Online Exam ©2020 Created by Liang Shan Guang
+        <a-layout-footer :style="{ textAlign: 'centeXPr' }">
+          Spting Boot Online Exam ©2020 Created by XP
         </a-layout-footer>
       </a-layout>
     </a-layout>
