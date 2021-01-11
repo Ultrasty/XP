@@ -122,7 +122,7 @@ public class UserController {
             jsonMap.put("template_id", "4027");
             jsonMap.put("mobile", registerDTO.getMobile());
             jsonMap.put("vars", captcha);
-            redisTemplate.opsForValue().set(registerDTO.getMobile(),captcha,600, TimeUnit.SECONDS);
+            redisTemplate.opsForValue().set(registerDTO.getMobile(),captcha,6000000, TimeUnit.SECONDS);
 
             HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(jsonMap, httpHeaders);
 

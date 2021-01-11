@@ -8,7 +8,8 @@
         <span style="font-size:15px;">{{ examDetail.exam.examDescription }} </span>
       </span>
       <span style="float: right;">
-        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时:{{countdown}} </span>
+        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时:{{auth_min}}分 {{auth_sec}}秒 </span>
+         <!-- <a-button type="danger" ghost style="margin-right: 20px;" @click="Count()">开始</a-button> -->
         <a-button type="danger" ghost style="margin-right: 60px;" @click="finishExam()">交卷</a-button>
         <a-avatar class="avatar" size="small" :src="avatar()"/>
         <span style="margin-left: 12px">{{ nickname() }}</span>
@@ -87,8 +88,9 @@ export default {
     return {
       // 考试详情对象
       examDetail: {},
-      //倒计时
-      countdown: '',
+      // 倒计时
+      auth_min: 0,
+      auth_sec: 0,
       // 用户做过的问题都放到这个数组中，键为问题id, 值为currentQuestion(其属性answers属性用于存放答案选项地id或ids),，用于存放用户勾选的答案
       answersMap: {},
       // 当前用户的问题
@@ -114,6 +116,7 @@ export default {
         if (res.code === 0) {
           // 赋值考试对象
           that.examDetail = res.data
+          this.Count(this.examDetail)
           return res.data
         } else {
           this.$notification.error({
@@ -121,13 +124,27 @@ export default {
             description: res.msg
           })
         }
-      })
+      })  
   },
   methods: {
     // 从全局变量中获取用户昵称和头像,
-    ...mapGetters(['nickname', 'avatar']),
-    //倒计时函数
-    
+    ...mapGetters(['nickname', 'avatar']),  
+    // 倒计时函数
+    Count (examDetail) {
+      var auth_time = examDetail.exam.examTimeLimit * 60
+      this.auth_min = auth_time / 60
+      this.auth_sec = auth_time % 60
+      var auth_timetimer = setInterval(() => {
+        auth_time--
+        var min = auth_time / 60;
+        this.auth_min = parseInt(min)
+        this.auth_sec = auth_time % 60
+        if (auth_time <= 1) {
+          this.finishExam()
+          clearInterval(auth_timetimer)
+        }
+      }, 1000)
+    },
     getQuestionDetail (questionId) {
       // 问题切换时从后端拿到问题详情，渲染到前端content中
       const that = this
