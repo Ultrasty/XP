@@ -11,16 +11,14 @@ import com.tongji.exam.entity.User;
 import com.tongji.exam.enums.LoginTypeEnum;
 import com.tongji.exam.enums.RoleEnum;
 import com.tongji.exam.qo.LoginQo;
-import com.tongji.exam.repository.ActionRepository;
-import com.tongji.exam.repository.PageRepository;
-import com.tongji.exam.repository.RoleRepository;
-import com.tongji.exam.repository.UserRepository;
+import com.tongji.exam.repository.*;
 import com.tongji.exam.service.UserService;
 import com.tongji.exam.utils.JwtUtils;
 import com.tongji.exam.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +52,9 @@ public class UserServiceImpl implements UserService {
     @Value("${user.default.username}")
     private String defaultUsername;
 
+    @Autowired
+    UpCodeRepository upCodeRepository;
+
 
     @Override
     public User register(RegisterDTO registerDTO) {
@@ -67,7 +68,13 @@ public class UserServiceImpl implements UserService {
             // 这里还需要进行加密处理，后续解密用Base64.decode()
             user.setUserPassword(Base64.encode(registerDTO.getPassword()));
             // 默认设置为学生身份，需要老师和学生身份地话需要管理员修改
-            user.setUserRoleId(RoleEnum.STUDENT.getId());
+            if(registerDTO.getUpup()!=null&&upCodeRepository.findUpCodeEntityByCode(registerDTO.getUpup())!=null)
+            {
+                user.setUserRoleId(RoleEnum.TEACHER.getId());
+                upCodeRepository.deleteById(registerDTO.getUpup());
+            }
+            else
+                user.setUserRoleId(RoleEnum.STUDENT.getId());
             // 设置头像图片地址, 先默认一个地址，后面用户可以自己再改
             user.setUserAvatar(defaultAvatar);
             // 设置描述信息，随便设置段默认的
@@ -79,8 +86,10 @@ public class UserServiceImpl implements UserService {
             user.setCreateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUpdateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUserPhone(registerDTO.getMobile());
-            if(registerDTO.getCaptcha().equals(redisTemplate.opsForValue().get(registerDTO.getMobile())))
+            String code=redisTemplate.opsForValue().get(registerDTO.getMobile());
+            if(registerDTO.getCaptcha().equals(code))
             {
+                System.out.println(registerDTO.getCaptcha()+"----------"+"code");
                 userRepository.save(user);
                 System.out.println(user);
                 return user;
