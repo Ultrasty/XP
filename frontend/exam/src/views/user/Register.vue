@@ -46,6 +46,15 @@
       <a-form-item>
         <a-input
           size="large"
+          autocomplete="false"
+          placeholder="升级码"
+          v-decorator="['upup']"
+        ></a-input>
+      </a-form-item>
+
+      <a-form-item>
+        <a-input
+          size="large"
           placeholder="11 位手机号"
           v-decorator="['mobile', {rules: [{ required: true, message: '请输入正确的手机号', pattern: /^1[3456789]\d{9}$/ }, { validator: this.handlePhoneCheck } ], validateTrigger: ['change', 'blur'] }]"
         >
@@ -217,7 +226,7 @@ export default {
             // 成功就跳转到结果页面
             console.log(res)
             if (res.msg === '注册成功') {
-              $router.push({ name: 'registerResult', params: { ...values } })
+              $router.push({name: 'registerResult', params: {...values}})
             } else {
               alert('注册失败')
             }
