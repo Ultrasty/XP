@@ -17,9 +17,18 @@ import com.tongji.exam.vo.UserVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Api(tags = "User APIs")
@@ -28,6 +37,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    RedisTemplate<String,String> redisTemplate;
 
     @PostMapping("/register")
     @ApiOperation("注册")
@@ -86,5 +98,52 @@ public class UserController {
         System.out.println("用户id：" + userId);
         System.out.println("用户名：" + username);
         return "用户id：" + userId + "\n用户名：" + username;
+    }
+
+    @PostMapping("/getSmsCaptcha")
+    @ApiOperation("获取短信验证码")
+    String getSmsCaptcha(@RequestBody User user){
+        try {
+            String captcha=getLinkNo();
+            String url = "https://sms-api.upyun.com/api/messages";
+
+            Map<String, String> jsonMap = new HashMap<>();
+            //如果需要其它的请求头信息、都可以在这里追加
+            HttpHeaders httpHeaders = new HttpHeaders();
+
+            httpHeaders.add("Authorization", "BNm0ib0FdEgibBO8u3LDvFytBcEeD3");
+
+            MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
+
+            httpHeaders.setContentType(type);
+
+            httpHeaders.setConnection("Keep-Alive");
+
+            jsonMap.put("template_id", "4027");
+            jsonMap.put("mobile", user.getUserPhone());
+            jsonMap.put("vars", captcha);
+            redisTemplate.opsForValue().set(user.getUserPhone(),captcha,60, TimeUnit.SECONDS);
+
+            HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(jsonMap, httpHeaders);
+
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<String> apiResponse = restTemplate.postForEntity(url, httpEntity, String.class);
+            return "验证码发送成功，请注意短信通知。";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "出现问题，尝试重新获取...";
+        }
+    }
+
+    public String getLinkNo() {
+        // 用字符数组的方式随机
+        String model = "01234567890";
+        StringBuilder sb=new StringBuilder();
+        char[] m = model.toCharArray();
+        for (int j = 0; j < 6; j++) {
+            char c = m[(int) (Math.random() * 10)];
+            sb.append(c);
+        }
+        return sb.toString();
     }
 }

@@ -26,6 +26,7 @@ import com.tongji.exam.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -38,6 +39,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    RedisTemplate<String,String> redisTemplate;
 
     @Autowired
     RoleRepository roleRepository;
@@ -76,11 +79,16 @@ public class UserServiceImpl implements UserService {
             user.setUserEmail(registerDTO.getEmail());
             // 需要验证手机号是否已经存在：数据字段已经设置unique了，失败会异常地
             user.setUserPhone(registerDTO.getMobile());
-            userRepository.save(user);
-            System.out.println(user);
-            return user;
+            if(registerDTO.getCaptcha().equals(redisTemplate.opsForValue().get(registerDTO.getMobile())))
+            {
+                userRepository.save(user);
+                System.out.println(user);
+                return user;
+            }
+            else
+                return null;
         } catch (Exception e) {
-            e.printStackTrace(); // 用户已经存在
+            e.printStackTrace(); // 用户已经存在或验证码错误
             // 出异常，返回null，表示注册失败
             return null;
         }
