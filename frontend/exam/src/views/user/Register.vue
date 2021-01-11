@@ -217,9 +217,9 @@ export default {
             // 成功就跳转到结果页面
             console.log(res)
             if (res.msg === '注册成功') {
-              $router.push({name: 'registerResult', params: {...values}})
+              $router.push({ name: 'registerResult', params: { ...values } })
             } else {
-              alert("注册失败")
+              alert('注册失败')
             }
           }).catch(err => {
             // 失败就弹出警告消息
