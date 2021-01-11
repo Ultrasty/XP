@@ -103,7 +103,7 @@ public class UserController {
 
     @PostMapping("/getSmsCaptcha")
     @ApiOperation("获取短信验证码")
-    String getSmsCaptcha(@RequestBody User user){
+    String getSmsCaptcha(@RequestBody RegisterDTO registerDTO){
         try {
             String captcha=getLinkNo();
             String url = "https://sms-api.upyun.com/api/messages";
@@ -121,9 +121,9 @@ public class UserController {
             httpHeaders.setConnection("Keep-Alive");
 
             jsonMap.put("template_id", "4027");
-            jsonMap.put("mobile", user.getUserPhone());
+            jsonMap.put("mobile", registerDTO.getMobile());
             jsonMap.put("vars", captcha);
-            redisTemplate.opsForValue().set(user.getUserPhone(),captcha,60, TimeUnit.SECONDS);
+            redisTemplate.opsForValue().set(registerDTO.getMobile(),captcha,6000000, TimeUnit.SECONDS);
 
             HttpEntity<Map<String, String>> httpEntity = new HttpEntity<>(jsonMap, httpHeaders);
 

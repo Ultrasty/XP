@@ -29,9 +29,7 @@ public class User {
     private String userDescription;
     private String userEmail;
     private String userPhone;
-    /**
-     * 创建时间, 设计表时设置了自动插入当前时间，无需在Java代码中设置了
-     */
+
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
