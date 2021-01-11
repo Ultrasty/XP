@@ -25,7 +25,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -74,8 +76,13 @@ public class UserServiceImpl implements UserService {
             user.setUserEmail(registerDTO.getEmail());
             // 需要验证手机号是否已经存在：数据字段已经设置unique了，失败会异常地
             user.setUserPhone(registerDTO.getMobile());
-            if(registerDTO.getCaptcha().equals(redisTemplate.opsForValue().get(registerDTO.getMobile())))
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            user.setCreateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
+            user.setUpdateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
+            String code=redisTemplate.opsForValue().get(registerDTO.getMobile());
+            if(registerDTO.getCaptcha().equals(code))
             {
+                System.out.println(registerDTO.getCaptcha()+"----------"+"code");
                 userRepository.save(user);
                 System.out.println(user);
                 return user;
