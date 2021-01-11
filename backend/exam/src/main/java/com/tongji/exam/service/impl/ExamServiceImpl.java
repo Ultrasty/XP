@@ -1,9 +1,4 @@
-/***********************************************************
- * @Description : 考试服务接口实现
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-28 08:06
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
+
 package com.tongji.exam.service.impl;
 
 import cn.hutool.core.util.IdUtil;

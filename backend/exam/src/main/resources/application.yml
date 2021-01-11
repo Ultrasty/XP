@@ -11,14 +11,12 @@ server:
 spring:
   application:
     name: service-exam
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     # 调试的时候用，用于打印完成SQL语句(但是不打印参数),联合下面的logging.level一同打印最完整的SQL信息(语句+参数)
     show-sql: false
     hibernate:
       ddl-auto: update
-      dialect: MySQL
+
   servlet:
     multipart:
       max-file-size: 100MB # 最大支持文件大小
@@ -29,7 +27,7 @@ spring:
 # 拦截器相关的配置
 interceptors:
   # 不需要进行鉴权的接口地址，用逗号隔开
-  auth-ignore-uris: ${server.servlet.context-path}/user/register,${server.servlet.context-path}/user/login
+  auth-ignore-uris: ${server.servlet.context-path}/user/register,${server.servlet.context-path}/user/login,${server.servlet.context-path}/user/getSmsCaptcha
 
 # SQL语句打印(能打印参数，设置为trace是打印完整语句，默认我们就关掉吧)
 logging:

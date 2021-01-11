@@ -18,11 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/***********************************************************
- * @note      : 文件传输工具类
- * @author    : l00379880 梁山广
- * @version   : V1.0 at 2019/5/19 16:15
- ***********************************************************/
 @Slf4j
 public class FileTransUtil {
     /**

@@ -31,15 +31,6 @@ import java.io.IOException;
 @Slf4j
 public class UploadDownloadController {
 
-//    @Autowired
-//    AITestConfig aiTestConfig;
-//
-//    @PostMapping("/upload/single")
-//    @ApiOperation("单文件上传")
-//    public String uploadFile(@RequestParam("file") MultipartFile uploadfile) {
-//        return FileTransUtil.uploadFile(uploadfile, "/root/" + File.separator + uploadfile.getOriginalFilename());
-//    }
-
     @ApiOperation("单文件上传,支持同时传入参数")
     @PostMapping("/api/upload/singleAndparas")
     public String uploadFileSingle(@RequestParam("dir") String dir, @RequestParam("file") MultipartFile uploadfile) {
