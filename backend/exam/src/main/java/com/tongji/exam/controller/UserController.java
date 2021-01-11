@@ -10,6 +10,7 @@ import com.tongji.exam.dto.RegisterDTO;
 import com.tongji.exam.entity.User;
 import com.tongji.exam.enums.ResultEnum;
 import com.tongji.exam.qo.LoginQo;
+import com.tongji.exam.qo.UserInfoQo;
 import com.tongji.exam.service.UserService;
 import com.tongji.exam.vo.ResultVO;
 import com.tongji.exam.vo.UserInfoVo;
@@ -145,5 +146,13 @@ public class UserController {
             sb.append(c);
         }
         return sb.toString();
+    }
+
+    @PostMapping("/user-info/update")
+    @ApiOperation("修改用户信息")
+    String updateUserInfo(@RequestBody UserInfoQo userInfoQo,HttpServletRequest request){
+        String userId = (String) request.getAttribute("user_id");
+        String result=userService.updateInfo(userInfoQo,userId);
+        return result;
     }
 }

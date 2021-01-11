@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User, String> {
      * @return 唯一符合的用户(实际邮箱字段已经在数据库设置unique了 ， 肯定只会返回1条)
      */
     User findByUserEmail(String email);
+
+    User findByUserId(String userId);
 }
