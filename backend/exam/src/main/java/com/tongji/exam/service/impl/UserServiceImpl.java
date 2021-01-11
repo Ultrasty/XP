@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
             // 需要验证手机号是否已经存在：数据字段已经设置unique了，失败会异常地
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             user.setCreateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
-
+            user.setUpdateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUserPhone(registerDTO.getMobile());
             if(registerDTO.getCaptcha().equals(redisTemplate.opsForValue().get(registerDTO.getMobile())))
             {
