@@ -228,7 +228,11 @@ export default {
             if (res.msg === '注册成功') {
               $router.push({name: 'registerResult', params: {...values}})
             } else {
-              alert('注册失败')
+              this.$notification['error']({
+                message: '提示',
+                description: '注册失败',
+                duration: 8
+              })
             }
           }).catch(err => {
             // 失败就弹出警告消息
