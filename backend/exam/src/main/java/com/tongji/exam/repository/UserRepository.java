@@ -10,12 +10,7 @@ import com.tongji.exam.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, String> {
-    /**
-     * 根据用户名查找到合适的用户
-     *
-     * @param username 用户名
-     * @return 唯一符合的用户(实际用户名字段已经在数据库设置unique了 ， 肯定只会返回1条)
-     */
+
     User findByUserUsername(String username);
 
     /**

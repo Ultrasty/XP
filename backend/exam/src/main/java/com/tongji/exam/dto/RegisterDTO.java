@@ -14,6 +14,7 @@ public class RegisterDTO {
     private String password;
     private String password2;
     private String mobile;
+    private String upup;
     /**
      * 验证码
      */
