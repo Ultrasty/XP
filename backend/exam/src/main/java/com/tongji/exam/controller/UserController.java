@@ -1,6 +1,6 @@
 package com.tongji.exam.controller;
 
-import com.tongji.exam.dto.RegisterDTO;
+import com.tongji.exam.qo.RegisterDTO;
 import com.tongji.exam.entity.User;
 import com.tongji.exam.enums.ResultEnum;
 import com.tongji.exam.qo.LoginQo;
@@ -106,7 +106,7 @@ public class UserController {
             //如果需要其它的请求头信息、都可以在这里追加
             HttpHeaders httpHeaders = new HttpHeaders();
 
-            httpHeaders.add("Authorization", "BNm0ib0FdEgibBO8u3LDvFytBcEeD3");
+            httpHeaders.add("Authorization", "4PIAMFgUKcuMRqJfrEyOcMHW0bTfjn");
 
             MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
 
@@ -114,7 +114,7 @@ public class UserController {
 
             httpHeaders.setConnection("Keep-Alive");
 
-            jsonMap.put("template_id", "4145");
+            jsonMap.put("template_id", "4175");
             jsonMap.put("mobile", registerDTO.getMobile());
             jsonMap.put("vars", captcha);
             redisTemplate.opsForValue().set(registerDTO.getMobile(),captcha,6000000, TimeUnit.SECONDS);

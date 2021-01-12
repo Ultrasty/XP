@@ -15,7 +15,7 @@ import java.util.List;
  * created by kz on
  */
 @RestController
-@Api(tags = "Exam APIs")
+@Api(tags = "Question APIs")
 @RequestMapping("/exam")
 public class QuestionController {
     @Autowired

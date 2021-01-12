@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 题目类型表，从功能角度划分，比如单选、多选、判断等
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019/5/14 07:48
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.entity;
 
 

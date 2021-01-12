@@ -17,20 +17,18 @@
 > 前后端分离，前段组件化，方便二次开发；后端
 
 + 后端采用SpringBoot+JPA++Swagger2+JWT校验,根据不同用户的权限返回给用户不同的数据
-+ 后端采用Vue+AntDesign,组件化拆分，封装了很多年公共组件，方便维护和二次开发
++ 后端采用Vue+AntDesign,组件化拆分，封装了很多公共组件，方便维护和二次开发
 
 ### 使用教程
 
 + 1.下载代码
-  ```shell
+ 
   git clone https://github.com/Ultrasty/XP/edit/master
   ```
 + 2.初始化数据库
   
-  > 安装mysql的步骤这里省略，网上的教程很多。安装好mysql后，新建exam数据库，密码和`spring-boot-online-exam/backend/exam/src/main/resources/application.yml`的`password: xxxxxx`保持一致，然后导入`spring-boot-online-exam/doc/sql/exam.sql`
 + 3.启动后端
   
-  > 打开`spring-boot-online-exam/backend/exam`这个Maven项目，可以在IDE里启动或者执行`mvn install`生成jar包启动
 + 4.启动前端
   + 进入到前端代码路径 `cd spring-boot-online-exam/frontend/exam/`
   + 安装依赖 `npm install`
@@ -71,13 +69,11 @@
 ### Todo
 + `√`0.修复bug：题目创建失败
 + `√`1.考试详情编辑
-+ 2.支持题目和考试的删除`删除的话比较麻烦，先不做了，最好是弄个visible字段，不实际删除，要不后面有些关联数据找不到就不好了`
-  
++ 2.支持题目和考试的删除
   > 如果题目有关联的考试则必须先删除对应的考试，反过来删除考试则不用删除题目
-+ 3.图片改成base64存到数据库中
++ `√`3.图片改成base64存到数据库中
 + 4.题干和选项支持富文本
 + 5.支持批量导入题目
 + 6.新增用户管理、学科管理功能
 + 7.老师能看到所有学生的成绩以及考试的统计信息
 + 8.更多的数据分析功能
-+ 9.支持容器化一键式部署(编好Dockerfile)

@@ -1,15 +1,12 @@
-/***********************************************************
- * @Description : 用户信息的前端展示类
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-26 12:59
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @NoArgsConstructor
@@ -20,20 +17,25 @@ public class UserInfoVo {
     private String userId;
 
     @JsonProperty("avatar")
+    @NotEmpty
     private String userAvatar;
 
     @JsonProperty("name")
+    @NotEmpty
     private String userNickname;
 
     @JsonProperty("username")
+    @NotEmpty
     private String userUsername;
 
     /**
      * 密码不用拷贝，免得泄露信息
      */
+    @NotEmpty
     private String password = "";
 
     @JsonProperty("email")
+    @Email
     private String userEmail;
 
     @JsonProperty("telephone")

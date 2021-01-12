@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试接口
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-28 08:05
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.service;
 
 import com.tongji.exam.entity.Exam;
@@ -19,17 +13,11 @@ public interface ExamService {
      */
     List<QuestionVo> getQuestionAll();
 
-    /**
-     * 根据前端传过来的问题实体更新问题和选项
-     *
-     * @param questionVo 问题实体
-     */
     QuestionVo updateQuestion(QuestionVo questionVo);
 
     /**
      * 问题创建
-     *
-     * @param questionCreateVo 问题创建实体类
+
      */
     void questionCreate(QuestionCreateVo questionCreateVo);
 
@@ -76,47 +64,20 @@ public interface ExamService {
      */
     List<ExamCardVo> getExamCardList();
 
-    /**
-     * 根据考试的id获取考试的详情
-     *
-     * @param id exam表的主键
-     * @return 考试详情的封装的VO对象
-     */
+    //根据考试的id获取考试的详情
     ExamDetailVo getExamDetail(String id);
 
-    /**
-     * 根据用户提交的作答信息进行判分
-     *
-     * @param userId     考试人
-     * @param examId     参与的考试
-     * @param answersMap 作答情况
-     * @return 本次考试记录
-     */
+    //根据用户提交的作答信息进行判分
     ExamRecord judge(String userId, String examId, HashMap<String, List<String>> answersMap);
 
-    /**
-     * 根据用户id获取此用户的所有考试信息
-     *
-     * @param userId 用户id
-     * @return 该用户的所有考试记录
-     */
+
+     //根据用户id获取此用户的所有考试信息
+
     List<ExamRecordVo> getExamRecordList(String userId);
 
-    /**
-     * 获取指定某次考试记录的详情
-     *
-     * @param recordId 考试记录的id
-     * @return 考试详情
-     */
+    //获取指定某次考试记录的详情
     RecordDetailVo getRecordDetail(String recordId);
 
-
-    /**
-     * 更新考试
-     *
-     * @param examVo 获取所有考试的接口中返回的考试信息结构
-     * @param userId 当前的用户
-     * @return 更新后的考试详情
-     */
+    //更新考试
     Exam update(ExamVo examVo, String userId);
 }

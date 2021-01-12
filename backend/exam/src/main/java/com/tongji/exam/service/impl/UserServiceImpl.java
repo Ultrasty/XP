@@ -1,9 +1,8 @@
-
 package com.tongji.exam.service.impl;
 
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.IdUtil;
-import com.tongji.exam.dto.RegisterDTO;
+import com.tongji.exam.qo.RegisterDTO;
 import com.tongji.exam.entity.Action;
 import com.tongji.exam.entity.Page;
 import com.tongji.exam.entity.Role;
@@ -26,7 +25,6 @@ import com.tongji.exam.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

@@ -6,12 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
-/**
- * created by kz on
- */
+
 @Entity
 @Table(name = "up_code", schema = "exam")
-public class UpCodeEntity {
+public class UpCode {
     private String code;
 
     @Id

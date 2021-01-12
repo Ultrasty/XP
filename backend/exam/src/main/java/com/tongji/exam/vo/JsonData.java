@@ -1,17 +1,11 @@
 package com.tongji.exam.vo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-/**
- * 功能描述：工具类
- *
- * @author liangshanguang
- * @date 2019-05-22 08:11
- */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,9 +17,7 @@ public class JsonData implements Serializable {
      * 状态码 0 表示成功，1表示处理中，-1表示失败
      */
     private Integer code;
-    /**
-     * 数据
-     */
+
     private Object data;
     /**
      * 描述

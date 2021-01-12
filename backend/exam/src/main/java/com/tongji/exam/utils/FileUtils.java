@@ -119,10 +119,5 @@ public class FileUtils {
         }
     }
 
-    public static void main(String[] args) {
-          FileUtils.createFileByUrl("http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0HyPeAAisRAADs167VCfA155.png", "png");
-          FileUtils.createImg("http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0HyPeAAisRAADs167VCfA155.png");
-    }
-
 
 }

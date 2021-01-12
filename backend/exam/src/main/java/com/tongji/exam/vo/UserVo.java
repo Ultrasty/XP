@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 用户信息的展示类,通过JsonProperty来简化返回
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-25 20:32
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

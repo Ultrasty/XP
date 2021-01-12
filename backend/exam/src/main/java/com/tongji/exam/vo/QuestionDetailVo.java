@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 问题详情的实体类
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-10-20 09:51
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.tongji.exam.entity.QuestionOption;

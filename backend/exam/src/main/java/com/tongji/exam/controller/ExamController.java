@@ -21,10 +21,10 @@ public class ExamController {
     @Autowired
     private ExamService examService;
 
-    @GetMapping("/all")
     @ApiOperation("获取全部考试的列表")
+    @GetMapping("/all")
     ResultVO<List<ExamVo>> getExamAll() {
-        // 需要拼接前端需要的考试列表对象
+        //需要拼接前端需要的考试列表对象
         ResultVO<List<ExamVo>> resultVO;
         try {
             List<ExamVo> examVos = examService.getExamAll();
