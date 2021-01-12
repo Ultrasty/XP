@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 成功或失败时的消息返回
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-17 07:43
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.utils;
 
 import com.tongji.exam.vo.ResultVO;

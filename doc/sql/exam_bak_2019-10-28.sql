@@ -397,7 +397,7 @@ CREATE TABLE `user`  (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('68042014e23c4ebea7234cb9c77cee5c', '王蕊', '暮雪飞扬', 'MTk5MjEwMjN3cg==', 2, 'http://d.lanrentuku.com/down/png/1904/business_avatar/9_avatar_2754584.png', '快乐就好', '1648266192@qq.com', '15261897332', '2019-05-06 18:03:27', '2019-10-27 10:27:10');
-INSERT INTO `user` VALUES ('79392778a90d4639a297dbd0bae0f779', '李华', '红领巾', 'YWRtaW4xMjM=', 3, 'http://d.lanrentuku.com/down/png/1904/business_avatar/8_avatar_2754583.png', '好好学习，天天向上', 'liangshanguang@huawei.com', '17712345678', '2019-05-06 18:07:14', '2019-10-27 10:27:19');
-INSERT INTO `user` VALUES ('a1b661031adf4a8f969f1869d479fe74', '梁山广', '水刃', 'MTk5MjEwMjN3cg==', 1, 'http://d.lanrentuku.com/down/png/1904/business_avatar/1_avatar_2754574.png', '绳锯木断，水滴石穿', 'liangshanguang2@gmail.com', '17601324488', '2019-05-06 17:57:44', '2019-10-27 10:27:29');
+INSERT INTO `user` VALUES ('79392778a90d4639a297dbd0bae0f779', '李华', '红领巾', 'YWRtaW4xMjM=', 3, 'http://d.lanrentuku.com/down/png/1904/business_avatar/8_avatar_2754583.png', '好好学习，天天向上', '@huawei.com', '17712345678', '2019-05-06 18:07:14', '2019-10-27 10:27:19');
+INSERT INTO `user` VALUES ('a1b661031adf4a8f969f1869d479fe74', '梁山广', '水刃', 'MTk5MjEwMjN3cg==', 1, 'http://d.lanrentuku.com/down/png/1904/business_avatar/1_avatar_2754574.png', '绳锯木断，水滴石穿', '2@gmail.com', '17601324488', '2019-05-06 17:57:44', '2019-10-27 10:27:29');
 
 SET FOREIGN_KEY_CHECKS = 1;

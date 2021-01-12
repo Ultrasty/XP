@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 登录的查询参数
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-19 20:18
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.qo;
 
 import lombok.AllArgsConstructor;

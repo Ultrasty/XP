@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : JWT工具类：JWT生产token和校验token的方法
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-21 08:15
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.utils;
 
 import com.tongji.exam.entity.User;
@@ -23,7 +17,7 @@ public class JwtUtils {
      */
     private static final long EXPIRE = 1000 * 60 * 60 * 24;
 
-    private static final String APP_SECRET = "liangshanguang";
+    private static final String APP_SECRET = "";
 
     public static String genJsonWebToken(User user) {
         if (user == null || user.getUserId() == null || user.getUserUsername() == null || user.getUserAvatar() == null) {

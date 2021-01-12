@@ -14,15 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-/***********************************************************
- * @note      : 文件上传下载的接口,由于Swagger的问题导致在SwaggerUI
- *              里测试不成功，实际上前端是完全没有问题的
- *  * 为了支持Ajax请求和响应，最简单的解决方案返回一个ResponseEntity。
- *  * 以下示例演示了上传文件的三种可能方式：
- *  * 1. 单文件上传 - `MultipartFile`
- *  * 2. 多文件上传 - `MultipartFile []`
- *  * 3. 将文件上传到模型 - `@ModelAttribute`
- ***********************************************************/
+
 @RestController
 @Api(tags = "Upload And Download APIs")
 @RequestMapping("/file")

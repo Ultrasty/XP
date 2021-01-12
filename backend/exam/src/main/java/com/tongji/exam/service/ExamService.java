@@ -2,7 +2,7 @@
  * @Description : 考试接口
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019-05-28 08:05
- * @email       : liangshanguang2@gmail.com
+ *
  ***********************************************************/
 package com.tongji.exam.service;
 
@@ -19,17 +19,11 @@ public interface ExamService {
      */
     List<QuestionVo> getQuestionAll();
 
-    /**
-     * 根据前端传过来的问题实体更新问题和选项
-     *
-     * @param questionVo 问题实体
-     */
     QuestionVo updateQuestion(QuestionVo questionVo);
 
     /**
      * 问题创建
-     *
-     * @param questionCreateVo 问题创建实体类
+
      */
     void questionCreate(QuestionCreateVo questionCreateVo);
 

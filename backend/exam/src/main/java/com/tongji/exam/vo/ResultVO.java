@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 响应结果的通用类
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-17 07:42
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;

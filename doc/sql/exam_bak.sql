@@ -253,7 +253,7 @@ CREATE TABLE `user` (
 --  Records of `user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES ('68042014e23c4ebea7234cb9c77cee5c', '王蕊', '暮雪飞扬', 'MTk5MjEwMjN3cg==', '2', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '快乐就好', '1648266192@qq.com', '15261897332', '2019-05-06 18:03:27', '2019-06-18 15:29:18'), ('79392778a90d4639a297dbd0bae0f779', '李华', '红领巾', 'YWRtaW4xMjM=', '3', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '好好学习，天天向上', 'liangshanguang@huawei.com', '17712345678', '2019-05-06 18:07:14', '2019-06-18 15:29:27'), ('a1b661031adf4a8f969f1869d479fe74', '梁山广', '水刃', 'MTk5MjEwMjN3cg==', '1', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '绳锯木断，水滴石穿', 'liangshanguang2@gmail.com', '17601324488', '2019-05-06 17:57:44', '2019-06-18 15:29:32');
+INSERT INTO `user` VALUES ('68042014e23c4ebea7234cb9c77cee5c', '王蕊', '暮雪飞扬', 'MTk5MjEwMjN3cg==', '2', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '快乐就好', '1648266192@qq.com', '15261897332', '2019-05-06 18:03:27', '2019-06-18 15:29:18'), ('79392778a90d4639a297dbd0bae0f779', '李华', '红领巾', 'YWRtaW4xMjM=', '3', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '好好学习，天天向上', '@huawei.com', '17712345678', '2019-05-06 18:07:14', '2019-06-18 15:29:27'), ('a1b661031adf4a8f969f1869d479fe74', '梁山广', '水刃', 'MTk5MjEwMjN3cg==', '1', 'http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0I_uyAUjlbAAAO1qHbugM426.png', '绳锯木断，水滴石穿', '2@gmail.com', '17601324488', '2019-05-06 17:57:44', '2019-06-18 15:29:32');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

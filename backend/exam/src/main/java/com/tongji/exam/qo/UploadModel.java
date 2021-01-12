@@ -1,11 +1,5 @@
 package com.tongji.exam.qo;
- 
-/***********************************************************
- * @Description : 文件传输的实体类
- * @author      : l00379880 梁山广
- * @date        : 2017/8/19 15:51
- * @version     : V1.0
- ***********************************************************/
+
  
 import lombok.AllArgsConstructor;
 import lombok.Data;

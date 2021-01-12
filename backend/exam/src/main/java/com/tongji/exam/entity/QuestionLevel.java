@@ -2,7 +2,7 @@
  * @Description : 题目难度等级，比如难、中、易等
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2019/5/14 07:47
- * @email       : liangshanguang2@gmail.com
+ *
  ***********************************************************/
 package com.tongji.exam.entity;
 

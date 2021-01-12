@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * 用户账号类型的枚举
- * @author liangshanguang
+ * @author
  */
 @Getter
 public enum LoginTypeEnum {
