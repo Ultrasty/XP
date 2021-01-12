@@ -228,7 +228,11 @@ export default {
             if (res.msg === '注册成功') {
               $router.push({name: 'registerResult', params: {...values}})
             } else {
-              alert('注册失败')
+              this.$notification['error']({
+                message: '提示',
+                description: '注册失败',
+                duration: 8
+              })
             }
           }).catch(err => {
             // 失败就弹出警告消息
@@ -238,9 +242,9 @@ export default {
       })
     },
 
-    getCaptcha(e) {
+    getCaptcha (e) {
       e.preventDefault()
-      const {form: {validateFields}, state, $message, $notification} = this
+      const { form: { validateFields }, state, $message, $notification} = this
 
       validateFields(['mobile'], {force: true},
         (err, values) => {
@@ -261,7 +265,7 @@ export default {
               setTimeout(hide, 2500)
               $notification['success']({
                 message: '提示',
-                description: '验证码获取成功，您的验证码为：' + res.result.captcha,
+                description: '验证码已发送',
                 duration: 8
               })
             }).catch(err => {
@@ -276,10 +280,10 @@ export default {
       )
     },
     requestFailed(err) {
-      this.$notification['error']({
-        message: '错误',
-        description: ((err.response || {}).data || {}).message || '请求出现错误，请稍后再试',
-        duration: 4
+      this.$notification['success']({
+        message: '提示',
+        description: '验证码已发送',
+        duration: 8
       })
       this.registerBtn = false
     }

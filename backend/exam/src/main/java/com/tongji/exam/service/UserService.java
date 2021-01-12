@@ -9,6 +9,7 @@ package com.tongji.exam.service;
 import com.tongji.exam.dto.RegisterDTO;
 import com.tongji.exam.entity.User;
 import com.tongji.exam.qo.LoginQo;
+import com.tongji.exam.qo.UserInfoQo;
 import com.tongji.exam.vo.UserInfoVo;
 import com.tongji.exam.vo.UserVo;
 
@@ -42,4 +43,11 @@ public interface UserService {
      * @return 用户信息组装的实体
      */
     UserInfoVo getInfo(String userId);
+
+    /**
+     *
+     * @param userInfoQo 用户要修改的个人信息
+     * @return 修改成功返回ok，失败返回null
+     */
+    String updateInfo(UserInfoQo userInfoQo,String user_id);
 }

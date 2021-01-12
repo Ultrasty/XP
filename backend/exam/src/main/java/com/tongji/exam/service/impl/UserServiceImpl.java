@@ -11,7 +11,15 @@ import com.tongji.exam.entity.User;
 import com.tongji.exam.enums.LoginTypeEnum;
 import com.tongji.exam.enums.RoleEnum;
 import com.tongji.exam.qo.LoginQo;
+
+import com.tongji.exam.qo.UserInfoQo;
+import com.tongji.exam.repository.ActionRepository;
+import com.tongji.exam.repository.PageRepository;
+import com.tongji.exam.repository.RoleRepository;
+import com.tongji.exam.repository.UserRepository;
+
 import com.tongji.exam.repository.*;
+
 import com.tongji.exam.service.UserService;
 import com.tongji.exam.utils.JwtUtils;
 import com.tongji.exam.vo.*;
@@ -27,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -192,5 +201,33 @@ public class UserServiceImpl implements UserService {
         // 最终把PageVo设置到UserInfoVo中，这样就完成了拼接
         userInfoVo.setRoleVo(roleVo);
         return userInfoVo;
+    }
+
+    @Override
+    public String updateInfo(UserInfoQo userInfoQo,String user_id) {
+        User user=userRepository.findByUserId(user_id);
+        if(user==null){
+            return null;
+        }
+        if(userInfoQo.getUserNickname()!=null){
+            user.setUserNickname(userInfoQo.getUserNickname());
+        }
+        if(userInfoQo.getUserEmail()!=null) {
+            user.setUserEmail(userInfoQo.getUserEmail());
+        }
+        if(userInfoQo.getUserAvatar()!=null) {
+            user.setUserAvatar(userInfoQo.getUserAvatar());
+        }
+        if(userInfoQo.getUserPassword()!=null){
+            user.setUserPassword(Base64.encode(userInfoQo.getUserPassword()));
+        }
+        if(userInfoQo.getUserDescription()!=null){
+            user.setUserDescription(userInfoQo.getUserDescription());
+        }
+        if(userInfoQo.getUserPhone()!=null) {
+            user.setUserPhone(userInfoQo.getUserPhone());
+        }
+        userRepository.save(user);
+        return "ok";
     }
 }
