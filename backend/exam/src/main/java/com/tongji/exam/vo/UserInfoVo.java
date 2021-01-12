@@ -13,8 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@
-
+@AllArgsConstructor
 public class UserInfoVo {
 
     @JsonProperty("id")
