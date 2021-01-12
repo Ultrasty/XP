@@ -5,9 +5,7 @@ import lombok.Getter;
 @Getter
 public enum QuestionEnum {
 
-    /**
-     * 问题类型
-     */
+
     RADIO(1, "单选题"),
     CHECK(2, "多选题"),
     JUDGE(3, "判断题");

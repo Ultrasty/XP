@@ -223,12 +223,7 @@ public class ExamServiceImpl implements ExamService {
         return questionSelectionVo;
     }
 
-    /**
-     * 去除字符串最后的，防止split的时候出错
-     *
-     * @param str 原始字符串
-     * @return
-     */
+
     public static String trimMiddleLine(String str) {
         if (str.charAt(str.length() - 1) == '-') {
             str = str.substring(0, str.length() - 1);

@@ -15,29 +15,17 @@ import java.io.PrintWriter;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
-    /**
-     * 有上面的@Component才能使得这个属性能从pplication.yml中取得拦截器的值
-     */
     @Value("${interceptors.auth-ignore-uris}")
     private String authIgnoreUris;
 
-    /**
-     * 进入controller之前进行拦截
-     *
-     * @param request  请求体
-     * @param response 响应体
-     * @param handler  处理者
-     * @return 是否继续往下走
-     * @throws Exception 拦截中出的异常
-     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("进入拦截器啦！");
+        System.out.println("进入拦截器:");
         String uri = request.getRequestURI();
         System.out.println(uri);
         System.out.println("无需拦截的接口路径：" + authIgnoreUris);
         String[] authIgnoreUriArr = authIgnoreUris.split(",");
-        // 登录和注册接口不需要进行token拦截和校验
+        // 登录和注册相关接口不需要进行token拦截和校验
         for (String authIgnoreUri : authIgnoreUriArr) {
             if (authIgnoreUri.equals(uri)) {
                 return true;
@@ -70,13 +58,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         return false;
     }
 
-    /**
-     * 响应数据给前端
-     *
-     * @param response 响应
-     * @param obj      返回的消息体
-     * @throws Exception 处理异常
-     */
     public static void sendJsonMessage(HttpServletResponse response, Object obj) throws Exception {
         Gson g = new Gson();
         response.setContentType("application/json; charset=utf-8");

@@ -5,9 +5,7 @@ import lombok.Getter;
 @Getter
 public enum RoleEnum {
 
-    /**
-     * 用户角色，和数据库里面的role表相对应
-     */
+
     ADMIN(1, "管理员"),
     TEACHER(2, "教师"),
     STUDENT(3, "学生");
