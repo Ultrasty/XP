@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 对外REST接口
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-16 23:45
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.controller;
 
 import com.tongji.exam.dto.RegisterDTO;
@@ -120,7 +114,7 @@ public class UserController {
 
             httpHeaders.setConnection("Keep-Alive");
 
-            jsonMap.put("template_id", "4027");
+            jsonMap.put("template_id", "4145");
             jsonMap.put("mobile", registerDTO.getMobile());
             jsonMap.put("vars", captcha);
             redisTemplate.opsForValue().set(registerDTO.getMobile(),captcha,6000000, TimeUnit.SECONDS);
