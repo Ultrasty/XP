@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试记录VO
- * @author      : 梁山广(Liang Shan Guang)
- * @date        : 2019/10/25 7:42
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.tongji.exam.entity.Exam;

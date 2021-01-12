@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试的前端展示类。examCreatorId可从token中获取
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-06-17 08:14
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试列表获取
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-06-22 17:00
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

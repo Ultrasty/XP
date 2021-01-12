@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 按照单选、多选和判断题返回对应的问题列表
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-06-23 11:00
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

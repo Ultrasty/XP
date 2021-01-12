@@ -1,18 +1,4 @@
-/*
- Navicat MySQL Data Transfer
 
- Source Server         : 122.112.151.149
- Source Server Type    : MySQL
- Source Server Version : 50715
- Source Host           : 122.112.151.149
- Source Database       : exam
-
- Target Server Type    : MySQL
- Target Server Version : 50715
- File Encoding         : utf-8
-
- Date: 06/23/2019 09:23:13 AM
-*/
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;

@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 文件传输类
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-19 10:27
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.utils;
 
 
@@ -130,27 +124,5 @@ public class FileUtils {
           FileUtils.createImg("http://122.112.151.149:8888/group1/M00/00/00/wKgAkF0HyPeAAisRAADs167VCfA155.png");
     }
 
-    public static boolean base64ToFile(String filePath, String base64Data) throws Exception {
-        String dataPrix = "";
-        String data = "";
 
-        if (base64Data == null || "".equals(base64Data)) {
-            return false;
-        } else {
-            String[] d = base64Data.split("base64,");
-            if (d != null && d.length == 2) {
-                dataPrix = d[0];
-                data = d[1];
-            } else {
-                return false;
-            }
-        }
-
-        // 因为BASE64Decoder的jar问题，此处使用spring框架提供的工具包
-        byte[] bs = Base64Utils.decodeFromString(data);
-        // 使用apache提供的工具类操作流
-        org.apache.commons.io.FileUtils.writeByteArrayToFile(new File(filePath), bs);
-
-        return true;
-    }
 }
