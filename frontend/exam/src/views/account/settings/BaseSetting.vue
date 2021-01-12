@@ -3,34 +3,60 @@
     <a-row :gutter="16">
       <a-col :md="24" :lg="16">
 
-        <a-form layout="vertical">
+        <a-form :form="form">
           <a-form-item
             label="昵称"
           >
-            <a-input placeholder="给自己起个名字" />
+          <a-input
+            size="large"
+            type="text"
+            placeholder="请输入昵称"
+            v-decorator="['userNickname', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.name}]"
+          ></a-input>
           </a-form-item>
+          
           <a-form-item
-            label="Bio"
+            label="个性签名"
           >
-            <a-textarea rows="4" placeholder="You are not alone."/>
+          <a-input
+            size="large"
+            type="text"
+            placeholder="请输入个性签名"
+            v-decorator="['userDescription', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.welcome}]"
+          ></a-input>
           </a-form-item>
 
           <a-form-item
             label="电子邮件"
-            :required="false"
           >
-            <a-input placeholder="exp@admin.com"/>
+          <a-input
+            size="large"
+            type="text"
+            placeholder="请输入电子邮件"
+            v-decorator="['userEmail', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.email}]"
+          ></a-input>
           </a-form-item>
+
           <a-form-item
             label="登录密码"
             :required="false"
           >
-            <a-input placeholder="密码"/>
+            <a-input
+            size="large"
+            type="text"
+            placeholder="请输入新密码"
+            v-decorator="['userPassword', {rules: [{ required: false }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.password}]"
+          ></a-input>
+          </a-form-item>
+
+          <a-form-item
+            label="头像"
+          >
+
           </a-form-item>
 
           <a-form-item>
-            <a-button type="primary">提交</a-button>
-            <a-button style="margin-left: 8px">保存</a-button>
+            <a-button type="primary" @click="HandleSubmit">提交</a-button>
           </a-form-item>
         </a-form>
 
@@ -55,6 +81,10 @@
 
 <script>
 import AvatarModal from './AvatarModal'
+import '../../../plugins/summernote'
+import $ from 'jquery'
+import {updateInfo , getInfo} from '../../../api/login'
+
 
 export default {
   components: {
@@ -77,12 +107,73 @@ export default {
         fixedBox: true,
         // 开启宽度和高度比例
         fixed: true,
-        fixedNumber: [1, 1]
-      }
+        fixedNumber: [1, 1],
+      },
+      InfoDetail : {},
+      form: this.$form.createForm(this)
     }
   },
+  mounted (){
+    getInfo()
+      .then(res =>{
+        if(res.code === 0) {
+          this.InfoDetail = res.data
+          return res.data
+        }else{
+          this.$notification.error({
+            message: '获取个人信息失败',
+            description: res.message
+          })
+        }
+      })
+  },
   methods: {
+    initSummernote () {
+      console.log('初始化富文本插件')
+      $('#summernote-exam-avatar-create').summernote({
+        lang: 'zh-CN',
+        placeholder: '粘贴截图到这即可，图片最好不要大于80*80',
+        height: 200,
+        width: 320,
+        htmlMode: true,
+        toolbar: [],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
+        fontNames: [
+          'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+          'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande',
+          'Tahoma', 'Times New Roman', 'Verdana'
+        ]
+      })
+    },
+    HandleSubmit (){
+      const { form: { validateFields } } = this
+      validateFields((errors, values) =>{
+        // values.userAvatar = $('#summernote-avatar-create').summernote('code')
+        if(values.userPassword == ''){
+          values.userPassword = null
+        }
+        console.log("提交数据到后端")
+        console.log(values.userPassword)
+        if(!errors) {
+          updateInfo(values).then(res => {
+            if(res === 'ok') {
+              this.$notification.success({ 
+                message: '修改成功',
+                description: '修改个人信息成功',
+              })
 
+              this.visible = false
+              this.$emit = ('ok')
+            }
+          }).catch(err => {
+            this.$notification.error({
+              message: '修改失败',
+              description: err.message
+            })
+          })
+        } 
+      } )
+    }
   }
 }
 </script>
