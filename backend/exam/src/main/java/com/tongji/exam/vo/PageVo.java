@@ -1,4 +1,3 @@
-
 package com.tongji.exam.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,5 +1,4 @@
 package com.tongji.exam.vo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

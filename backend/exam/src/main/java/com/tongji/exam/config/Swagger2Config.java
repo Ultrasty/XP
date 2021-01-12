@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : Swagger2的配置
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-15 07:39
- *
- ***********************************************************/
 package com.tongji.exam.config;
 
 import org.springframework.context.annotation.Bean;
@@ -41,7 +35,6 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                // 自行修改为自己的包路径
                 .apis(RequestHandlerSelectors.basePackage("com.tongji"))
                 .paths(PathSelectors.any())
                 .build()

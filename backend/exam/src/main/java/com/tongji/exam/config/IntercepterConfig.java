@@ -1,7 +1,3 @@
-/***********************************************************
- * @Description : 拦截器配置
-
- ***********************************************************/
 package com.tongji.exam.config;
 
 import com.tongji.exam.interceptor.LoginInterceptor;

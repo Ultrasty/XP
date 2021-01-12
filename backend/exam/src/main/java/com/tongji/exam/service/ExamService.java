@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试接口
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-28 08:05
- *
- ***********************************************************/
 package com.tongji.exam.service;
 
 import com.tongji.exam.entity.Exam;
