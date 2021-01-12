@@ -52,8 +52,9 @@
           <a-form-item
             label="头像"
           >
-
+            <div id="summernote-avatar-create"></div>
           </a-form-item>
+
 
           <a-form-item>
             <a-button type="primary" @click="HandleSubmit">提交</a-button>
@@ -62,20 +63,12 @@
 
       </a-col>
       <a-col :md="24" :lg="8" :style="{ minHeight: '180px' }">
-        <div class="ant-upload-preview" @click="$refs.modal.edit(1)" >
-          <a-icon type="cloud-upload-o" class="upload-icon"/>
-          <div class="mask">
-            <a-icon type="plus" />
-          </div>
-          <img :src="option.img"/>
+        <div class="ant-upload-preview" >
+          <img id="pic" width="50px" height="60px"/>
         </div>
       </a-col>
 
     </a-row>
-
-    <avatar-modal ref="modal">
-
-    </avatar-modal>
   </div>
 </template>
 
@@ -85,7 +78,6 @@ import '../../../plugins/summernote'
 import $ from 'jquery'
 import {updateInfo , getInfo} from '../../../api/login'
 
-
 export default {
   components: {
     AvatarModal
@@ -93,6 +85,7 @@ export default {
   data () {
     return {
       // cropper
+      userAvatar: undefined,  
       preview: {},
       option: {
         img: '/avatar2.jpg',
@@ -113,11 +106,15 @@ export default {
       form: this.$form.createForm(this)
     }
   },
+  updated () {
+    this.initSummernote()
+  },
   mounted (){
     getInfo()
       .then(res =>{
         if(res.code === 0) {
           this.InfoDetail = res.data
+          document.getElementById("pic").src = this.InfoDetail.avatar
           return res.data
         }else{
           this.$notification.error({
@@ -130,11 +127,11 @@ export default {
   methods: {
     initSummernote () {
       console.log('初始化富文本插件')
-      $('#summernote-exam-avatar-create').summernote({
+      $('#summernote-avatar-create').summernote({
         lang: 'zh-CN',
         placeholder: '粘贴截图到这即可，图片最好不要大于80*80',
         height: 200,
-        width: 320,
+        width: 600,
         htmlMode: true,
         toolbar: [],
         fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
@@ -152,8 +149,14 @@ export default {
         if(values.userPassword == ''){
           values.userPassword = null
         }
+        
+        values.userAvatar = $('#summernote-avatar-create').summernote('code')
+        if (values.userAvatar == '<p><br></p>')
+        {
+          values.userAvatar = "<p><img src=\""+this.InfoDetail.avatar+" \" data-filename=\"image.png\" style=\"width: 15px;\"><br></p>"
+        }
         console.log("提交数据到后端")
-        console.log(values.userPassword)
+        console.log(values.userAvatar)
         if(!errors) {
           updateInfo(values).then(res => {
             if(res === 'ok') {
@@ -193,37 +196,6 @@ export default {
     border-radius: 50%;
     box-shadow: 0 0 4px #ccc;
 
-    .upload-icon {
-      position: absolute;
-      top: 0;
-      right: 10px;
-      font-size: 1.4rem;
-      padding: 0.5rem;
-      background: rgba(222, 221, 221, 0.7);
-      border-radius: 50%;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-    }
-    .mask {
-      opacity: 0;
-      position: absolute;
-      background: rgba(0,0,0,0.4);
-      cursor: pointer;
-      transition: opacity 0.4s;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      i {
-        font-size: 2rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -1rem;
-        margin-top: -1rem;
-        color: #d6d6d6;
-      }
-    }
 
     img, .mask {
       width: 100%;

@@ -45,6 +45,7 @@
         <div v-show="currentStep === 2">
           <!-- 非判断题的时候显示 -->
           <a-form-item label="创建选项" :labelCol="labelCol" :wrapperCol="wrapperCol" v-if="type!==3">
+            
             <a-input
               v-decorator="['option', { rules: [{required: true}]}]"
               placeholder="输入内容后按Enter添加到下方选项列表"
@@ -122,13 +123,13 @@ export default {
   data () {
     return {
       labelCol: {
-        xs: { span: 2 },
-        sm: { span: 2 }
+        xs: { span: 3 },
+        sm: { span: 3 }
       },
       size: 'default',
       wrapperCol: {
-        xs: { span: 22 },
-        sm: { span: 22 }
+        xs: { span: 21 },
+        sm: { span: 21 }
       },
       // 单选和判断题的答案
       answerOption: '',

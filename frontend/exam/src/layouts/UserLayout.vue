@@ -4,12 +4,12 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="../assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Online Exam</span>
+            <img src="../assets/tjicon.png" class="logo" alt="logo">
+            <span class="title">XP Online Exam</span>
           </a>
         </div>
         <div class="desc">
-          基于SpringBoot+Vue实现的在线考试系统
+          极限开发——在线考试系统
         </div>
       </div>
 
@@ -64,12 +64,12 @@ export default {
     .container {
       width: 100%;
       min-height: 100%;
-      background: #f0f2f5 url(../assets/background.svg) no-repeat 50%;
+      background: #f0f2f5 url(../assets/123.png) no-repeat 50%;
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
 
-      a {
+      a { 
         text-decoration: none;
       }
 
