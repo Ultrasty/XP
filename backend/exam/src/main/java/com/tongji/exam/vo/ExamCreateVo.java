@@ -23,7 +23,6 @@ public class ExamCreateVo {
     @JsonProperty("elapse")
     private Integer examTimeLimit;
 
-
     /**
      * 单选题
      */
