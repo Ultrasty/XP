@@ -146,6 +146,11 @@ public class UserController {
     @ApiOperation("修改用户信息")
     String updateUserInfo(@RequestBody UserInfoQo userInfoQo,HttpServletRequest request){
         String userId = (String) request.getAttribute("user_id");
+        String avatar=userInfoQo.getUserAvatar();
+        int index1=avatar.indexOf('\"');
+        int index2=avatar.indexOf("\"");
+        String base64Avatar=avatar.substring(index1,index2);
+        userInfoQo.setUserAvatar(base64Avatar);
         String result=userService.updateInfo(userInfoQo,userId);
         return result;
     }
