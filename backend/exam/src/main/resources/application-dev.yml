@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/exam?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.101.10.59:3306/exam?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
   redis:
     host: 139.224.49.108
     port: 6379

@@ -1,4 +1,3 @@
-
 package com.tongji.exam.service.impl;
 
 import cn.hutool.core.util.IdUtil;
@@ -172,7 +171,6 @@ public class ExamServiceImpl implements ExamService {
         Question question = new Question();
         // 把能复制的属性都复制过来
         BeanUtils.copyProperties(questionCreateVo, question);
-        // 设置下questionOptionIds和questionAnswerOptionIds，需要自己用Hutool生成下
         List<QuestionOption> questionOptionList = new ArrayList<>();
         List<QuestionOptionCreateVo> questionOptionCreateVoList = questionCreateVo.getQuestionOptionCreateVoList();
         for (QuestionOptionCreateVo questionOptionCreateVo : questionOptionCreateVoList) {

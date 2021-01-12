@@ -1,9 +1,3 @@
-/***********************************************************
- * @Description : 考试服务
- * @author      : 梁山广(Laing Shan Guang)
- * @date        : 2019-05-28 08:04
- * @email       : liangshanguang2@gmail.com
- ***********************************************************/
 package com.tongji.exam.controller;
 
 import com.tongji.exam.entity.Exam;
@@ -216,7 +210,6 @@ public class ExamController {
         try {
             // 拦截器里设置上的用户id
             String userId = (String) request.getAttribute("user_id");
-            // 下面根据用户账号拿到他(她所有的考试信息)，注意要用VO封装下
             List<ExamRecordVo> examRecordVoList = examService.getExamRecordList(userId);
             resultVO = new ResultVO<>(0, "获取考试记录成功", examRecordVoList);
         } catch (Exception e) {
