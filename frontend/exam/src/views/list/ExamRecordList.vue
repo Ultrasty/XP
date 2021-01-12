@@ -11,7 +11,9 @@
             <a slot="title">{{ item.exam.examName }}</a>
           </a-list-item-meta>
           <div slot="actions">
-            <a @click="viewExamRecordDetail(item.examRecord)">查看考试详情</a>
+            <button class="record-btn">
+              <a @click="viewExamRecordDetail(item.examRecord)">查看考试详情</a>
+            </button>
           </div>
           <div class="list-content">
             <div class="list-content-item">
@@ -90,6 +92,16 @@ export default {
     width: 48px;
     height: 48px;
     line-height: 48px;
+  }
+  .record-btn{
+     height: 40px; /* 高度 */
+    border-width: 0px; /* 边框宽度 */
+    border-radius: 3px; /* 边框半径 */
+
+    cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+    outline: none; /* 不显示轮廓线 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    color: black; /* 字体颜色 */
   }
 
   .list-content-item {

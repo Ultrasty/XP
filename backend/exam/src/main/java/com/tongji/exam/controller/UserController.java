@@ -148,7 +148,7 @@ public class UserController {
         String userId = (String) request.getAttribute("user_id");
         String avatar=userInfoQo.getUserAvatar();
         String str[]=avatar.split("\"",3);
-        System.out.println(str[1]); 
+        System.out.println(str[1]);
         String base64Avatar=str[1];
         userInfoQo.setUserAvatar(base64Avatar);
         String result=userService.updateInfo(userInfoQo,userId);

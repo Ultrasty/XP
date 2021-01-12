@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import LogoSvg from '../../assets/logo.svg?inline'
+import LogoSvg from '../../assets/tj.svg?inline'
 
 export default {
   name: 'Logo',
@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Online Exam',
+      default: 'XP Online Exam',
       required: false
     },
     showTitle: {
