@@ -21,13 +21,13 @@ import java.io.IOException;
 @Slf4j
 public class UploadDownloadController {
 
-    @ApiOperation("单文件上传,支持同时传入参数")
+    @ApiOperation("单文件上传,可以同时传入参数")
     @PostMapping("/api/upload/singleAndparas")
     public String uploadFileSingle(@RequestParam("dir") String dir, @RequestParam("file") MultipartFile uploadfile) {
         return FileTransUtil.uploadFile(uploadfile, dir);
     }
 
-    @ApiOperation("单文件上传,支持同时传入参数,Model")
+    @ApiOperation("单文件上传,支持同时传入文件读取模式参数")
     @PostMapping("/upload/single/model")
     public String singleUploadFileModel(@ModelAttribute("model") UploadModel2 model) {
         return FileTransUtil.uploadFile(model.getFile(), model.getDir());

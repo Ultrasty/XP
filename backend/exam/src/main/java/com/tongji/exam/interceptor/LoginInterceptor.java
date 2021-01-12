@@ -25,16 +25,15 @@ public class LoginInterceptor implements HandlerInterceptor {
         System.out.println(uri);
         System.out.println("无需拦截的接口路径：" + authIgnoreUris);
         String[] authIgnoreUriArr = authIgnoreUris.split(",");
-        // 登录和注册相关接口不需要进行token拦截和校验
+        // 登录和注册相关接口不需要进行token拦截和校验，直接返回true
         for (String authIgnoreUri : authIgnoreUriArr) {
             if (authIgnoreUri.equals(uri)) {
                 return true;
             }
         }
-        // 注意要和前端适配Access-Token属性，前端会在登陆后的每个接口请求头加Access-Token属性
+        //和前端适配Access-Token属性，前端会在登陆后的每个接口请求头加Access-Token属性
         String token = request.getHeader("Access-Token");
         if (token == null) {
-            // token不在header中时，也可能在参数中(RequestParam)
             token = request.getParameter("token");
         }
         if (token != null) {
@@ -45,11 +44,10 @@ public class LoginInterceptor implements HandlerInterceptor {
                 sendJsonMessage(response, JsonData.buildError("token无效，请重新登录"));
                 return false;
             }
-            // 用户的的主键id
+
             String id = (String) claims.get("id");
-            // 用户名
+
             String username = (String) claims.get("username");
-            // 把这两个参数放到请求中，从而可以在controller中获取到，不需要在controller中在用Jwt解密了,request.getAttribute("属性名")即可获取
             request.setAttribute("user_id", id);
             request.setAttribute("username", username);
             return true;

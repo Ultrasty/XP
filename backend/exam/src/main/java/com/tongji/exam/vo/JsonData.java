@@ -17,9 +17,7 @@ public class JsonData implements Serializable {
      * 状态码 0 表示成功，1表示处理中，-1表示失败
      */
     private Integer code;
-    /**
-     * 数据
-     */
+
     private Object data;
     /**
      * 描述
