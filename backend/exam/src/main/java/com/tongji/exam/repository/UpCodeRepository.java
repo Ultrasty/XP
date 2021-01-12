@@ -1,9 +1,9 @@
 package com.tongji.exam.repository;
 
-import com.tongji.exam.entity.UpCodeEntity;
+import com.tongji.exam.entity.UpCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UpCodeRepository  extends JpaRepository<UpCodeEntity, String> {
+public interface UpCodeRepository  extends JpaRepository<UpCode, String> {
 
-    UpCodeEntity findUpCodeEntityByCode(String code);
+    UpCode findUpCodeEntityByCode(String code);
 }

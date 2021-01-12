@@ -369,12 +369,11 @@ public class ExamServiceImpl implements ExamService {
         exam.setExamCreatorId(userId);
         exam.setCreateTime(new Date());
         exam.setUpdateTime(new Date());
-        // Todo:这两个日志后面是要在前端传入的，这里暂时定为当前日期
         exam.setExamStartDate(new Date());
         exam.setExamEndDate(new Date());
         String radioIdsStr = "";
         String checkIdsStr = "";
-        String judgeIdsStr = "";
+        StringBuilder judgeIdsStr = new StringBuilder();
         List<ExamQuestionSelectVo> radios = examCreateVo.getRadios();
         List<ExamQuestionSelectVo> checks = examCreateVo.getChecks();
         List<ExamQuestionSelectVo> judges = examCreateVo.getJudges();
@@ -395,16 +394,16 @@ public class ExamServiceImpl implements ExamService {
         checkIdsStr = replaceLastSeparator(checkIdsStr);
         for (ExamQuestionSelectVo judge : judges) {
             if (judge.getChecked()) {
-                judgeIdsStr += judge.getQuestionId() + "-";
+                judgeIdsStr.append(judge.getQuestionId()).append("-");
                 judgeCnt++;
             }
         }
-        judgeIdsStr = replaceLastSeparator(judgeIdsStr);
+        judgeIdsStr = new StringBuilder(replaceLastSeparator(judgeIdsStr.toString()));
         exam.setExamQuestionIds(radioIdsStr + "-" + checkIdsStr + "-" + judgeIdsStr);
         // 设置各个题目的id
         exam.setExamQuestionIdsRadio(radioIdsStr);
         exam.setExamQuestionIdsCheck(checkIdsStr);
-        exam.setExamQuestionIdsJudge(judgeIdsStr);
+        exam.setExamQuestionIdsJudge(judgeIdsStr.toString());
 
         // 计算总分数
         int examScore = radioCnt * exam.getExamScoreRadio() + checkCnt * exam.getExamScoreCheck() + judgeCnt * exam.getExamScoreJudge();
@@ -487,7 +486,6 @@ public class ExamServiceImpl implements ExamService {
 
     @Override
     public ExamRecord judge(String userId, String examId, HashMap<String, List<String>> answersMap) {
-        // 开始考试判分啦~~~
         // 1.首先获取考试对象和选项数组
         ExamDetailVo examDetailVo = getExamDetail(examId);
         Exam exam = examDetailVo.getExam();

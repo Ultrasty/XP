@@ -1,4 +1,4 @@
-package com.tongji.exam.dto;
+package com.tongji.exam.qo;
 
 import lombok.Data;
 
@@ -9,8 +9,6 @@ public class RegisterDTO {
     private String password2;
     private String mobile;
     private String upup;
-    /**
-     * 验证码
-     */
+    //验证码
     private String captcha;
 }

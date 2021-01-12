@@ -10,12 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UploadModel {
-    /**
-     * 要保存的文件
-     */
+    //要保存的文件
     private MultipartFile[] files;
-    /**
-     * 文件要存储的文件夹
-     */
+    //文件要存储的文件夹
     private String dir;
 }

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum ResultEnum {
-    // 下面是本项目用到的所有错误码
+    // 下面是所有错误码
     REGISTER_SUCCESS(0, "注册成功"),
     REGISTER_FAILED(-2, "注册失败"),
     LOGIN_SUCCESS(0, "登录成功"),

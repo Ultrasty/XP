@@ -12,7 +12,7 @@ public class ExamQuestionSelectVo {
     private String questionName;
 
     /**
-     * 这个问题是否被选为了考试中的题目.默认是false，经过前端修改后可能会变成true，
+     * 这个问题是否被选为了考试中的题目.默认是false即未选中，前端修改后可能会变成true，
      * 传回来用于创建问题
      */
     @JsonProperty("checked")

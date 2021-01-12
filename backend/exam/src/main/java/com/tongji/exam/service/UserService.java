@@ -1,6 +1,6 @@
 package com.tongji.exam.service;
 
-import com.tongji.exam.dto.RegisterDTO;
+import com.tongji.exam.qo.RegisterDTO;
 import com.tongji.exam.entity.User;
 import com.tongji.exam.qo.LoginQo;
 import com.tongji.exam.qo.UserInfoQo;

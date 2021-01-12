@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "up_code", schema = "exam")
-public class UpCodeEntity {
+public class UpCode {
     private String code;
 
     @Id
