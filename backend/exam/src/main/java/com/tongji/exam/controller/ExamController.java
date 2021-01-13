@@ -39,6 +39,10 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据问题类别返回列表
+     * @return
+     */
     @GetMapping("/question/type/list")
     @ApiOperation("获取问题分类返回")
     ResultVO<ExamQuestionTypeVo> getExamQuestionTypeList() {
@@ -54,6 +58,12 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 创建考试
+     * @param examCreateVo
+     * @param request
+     * @return
+     */
     @PostMapping("/create")
     @ApiOperation("创建考试")
     ResultVO<Exam> createExam(@RequestBody ExamCreateVo examCreateVo, HttpServletRequest request) {
@@ -71,7 +81,7 @@ public class ExamController {
     }
 
     /**
-     *
+     *更新考试
      * @param examVo
      * @param request
      * @return
@@ -93,7 +103,7 @@ public class ExamController {
     }
 
     /**
-     *
+     * 获取考试列表，适配前端卡片列表
      * @return
      */
     @GetMapping("/card/list")
@@ -111,6 +121,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据考试的id，获取考试详情
+     * @param id
+     * @return
+     */
     @GetMapping("/detail/{id}")
     @ApiOperation("根据考试的id，获取考试详情")
     ResultVO<ExamDetailVo> getExamDetail(@PathVariable String id) {
@@ -125,6 +140,13 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据用户提交的答案对指定id的考试判分
+     * @param examId
+     * @param answersMap
+     * @param request
+     * @return
+     */
     @PostMapping("/finish/{examId}")
     @ApiOperation("根据用户提交的答案对指定id的考试判分")
     ResultVO<ExamRecord> finishExam(@PathVariable String examId, @RequestBody HashMap<String, List<String>> answersMap, HttpServletRequest request) {
@@ -142,6 +164,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 获取当前用户的考试记录
+     * @param request
+     * @return
+     */
     @GetMapping("/record/list")
     @ApiOperation("获取当前用户的考试记录")
     ResultVO<List<ExamRecordVo>> getExamRecordList(HttpServletRequest request) {
@@ -158,6 +185,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据考试记录id获取考试记录详情
+     * @param recordId
+     * @return
+     */
     @GetMapping("/record/detail/{recordId}")
     @ApiOperation("根据考试记录id获取考试记录详情")
     ResultVO<RecordDetailVo> getExamRecordDetail(@PathVariable String recordId) {

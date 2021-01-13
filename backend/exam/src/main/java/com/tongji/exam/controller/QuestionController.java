@@ -19,6 +19,10 @@ public class QuestionController {
     @Autowired
     private ExamService examService;
 
+    /**
+     * 获取所有问题的列表
+     * @return
+     */
     @GetMapping("/question/all")
     @ApiOperation("获取所有问题的列表")
     ResultVO<List<QuestionVo>> getQuestionAll() {
@@ -33,6 +37,11 @@ public class QuestionController {
         return resultVO;
     }
 
+    /**
+     * 更新问题
+     * @param questionVo
+     * @return
+     */
     @PostMapping("/question/update")
     @ApiOperation("更新问题")
     ResultVO<QuestionVo> questionUpdate(@RequestBody QuestionVo questionVo) {
@@ -47,6 +56,12 @@ public class QuestionController {
         }
     }
 
+    /**
+     * 创建问题
+     * @param questionCreateSimplifyVo
+     * @param request
+     * @return
+     */
     @PostMapping("/question/create")
     @ApiOperation("创建问题")
     ResultVO<String> questionCreate(@RequestBody QuestionCreateSimplifyVo questionCreateSimplifyVo, HttpServletRequest request) {
@@ -66,6 +81,10 @@ public class QuestionController {
         }
     }
 
+    /**
+     * 获取问题分类的相关选项
+     * @return
+     */
     @GetMapping("/question/selection")
     @ApiOperation("获取问题分类的相关选项")
     ResultVO<QuestionSelectionVo> getSelections() {
@@ -77,6 +96,11 @@ public class QuestionController {
         }
     }
 
+    /**
+     * 根据问题的id获取问题的详细信息
+     * @param id
+     * @return
+     */
     @GetMapping("/question/detail/{id}")
     @ApiOperation("根据问题的id获取问题的详细信息")
     ResultVO<QuestionDetailVo> getQuestionDetail(@PathVariable String id) {
