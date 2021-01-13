@@ -95,7 +95,6 @@ const user = {
         })
       })
     },
-
     // 登出
     Logout ({ commit, state }) {
       return new Promise((resolve) => {
