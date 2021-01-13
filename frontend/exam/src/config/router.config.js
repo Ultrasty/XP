@@ -138,10 +138,6 @@ export const asyncRouterMap = [
   }
 ]
 
-/**
- * 基础路由，不在主菜单上展示，独立的路由
- * @type { *[] }
- */
 export const constantRouterMap = [
   {
     path: '/user',
