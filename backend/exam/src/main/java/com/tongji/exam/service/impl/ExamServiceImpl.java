@@ -224,6 +224,11 @@ public class ExamServiceImpl implements ExamService {
     }
 
 
+    /**
+     * 去掉字符串结尾的'-'防止出错
+     * @param str
+     * @return
+     */
     public static String trimMiddleLine(String str) {
         if (str.charAt(str.length() - 1) == '-') {
             str = str.substring(0, str.length() - 1);
@@ -261,6 +266,11 @@ public class ExamServiceImpl implements ExamService {
         return getExamVos(examList);
     }
 
+    /**
+     * 根据考试基本信息（id），查询考试具体信息(题目列表)
+     * @param examList
+     * @return
+     */
     private List<ExamVo> getExamVos(List<Exam> examList) {
         // 需要自定义的exam列表
         List<ExamVo> examVoList = new ArrayList<>();

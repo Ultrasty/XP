@@ -15,9 +15,7 @@ public class ExamCardVo {
     private String examDescription;
     @JsonProperty("score")
     private Integer examScore;
-    /**
-     * 考试限制的时间，单位为分钟
-     */
+    //考试限制的时间，单位为分钟
     @JsonProperty("elapse")
     private Integer examTimeLimit;
 }

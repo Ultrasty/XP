@@ -15,7 +15,7 @@ public class CORSConf {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                log.info("初始化 CORSConfiguration 配置");
+                log.info("初始化 跨域 配置");
                 registry.addMapping("/**")
                         .allowedHeaders("*")
                         .allowedMethods("*")

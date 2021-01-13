@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-        //和前端适配Access-Token属性，前端会在登陆后的每个接口请求头加Access-Token属性
+        //前端要在登陆后的每个接口请求头加Access-Token属性
         String token = request.getHeader("Access-Token");
         if (token == null) {
             token = request.getParameter("token");

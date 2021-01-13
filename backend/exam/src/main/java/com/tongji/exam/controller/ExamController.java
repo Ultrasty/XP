@@ -6,7 +6,6 @@ import com.tongji.exam.service.ExamService;
 import com.tongji.exam.vo.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +20,10 @@ public class ExamController {
     @Autowired
     private ExamService examService;
 
+    /**
+     * 获取全部考试列表
+     * @return
+     */
     @ApiOperation("获取全部考试的列表")
     @GetMapping("/all")
     ResultVO<List<ExamVo>> getExamAll() {
@@ -36,8 +39,12 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据问题类别返回列表
+     * @return
+     */
     @GetMapping("/question/type/list")
-    @ApiOperation("获取问题列表，按照单选、多选和判断题分类返回")
+    @ApiOperation("获取问题分类返回")
     ResultVO<ExamQuestionTypeVo> getExamQuestionTypeList() {
         // 获取问题的分类列表
         ResultVO<ExamQuestionTypeVo> resultVO;
@@ -51,6 +58,12 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 创建考试
+     * @param examCreateVo
+     * @param request
+     * @return
+     */
     @PostMapping("/create")
     @ApiOperation("创建考试")
     ResultVO<Exam> createExam(@RequestBody ExamCreateVo examCreateVo, HttpServletRequest request) {
@@ -67,6 +80,12 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     *更新考试
+     * @param examVo
+     * @param request
+     * @return
+     */
     @PostMapping("/update")
     @ApiOperation("更新考试")
     ResultVO<Exam> updateExam(@RequestBody ExamVo examVo, HttpServletRequest request) {
@@ -83,6 +102,10 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 获取考试列表，适配前端卡片列表
+     * @return
+     */
     @GetMapping("/card/list")
     @ApiOperation("获取考试列表，适配前端卡片列表")
     ResultVO<List<ExamCardVo>> getExamCardList() {
@@ -98,6 +121,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据考试的id，获取考试详情
+     * @param id
+     * @return
+     */
     @GetMapping("/detail/{id}")
     @ApiOperation("根据考试的id，获取考试详情")
     ResultVO<ExamDetailVo> getExamDetail(@PathVariable String id) {
@@ -112,6 +140,13 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据用户提交的答案对指定id的考试判分
+     * @param examId
+     * @param answersMap
+     * @param request
+     * @return
+     */
     @PostMapping("/finish/{examId}")
     @ApiOperation("根据用户提交的答案对指定id的考试判分")
     ResultVO<ExamRecord> finishExam(@PathVariable String examId, @RequestBody HashMap<String, List<String>> answersMap, HttpServletRequest request) {
@@ -129,6 +164,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 获取当前用户的考试记录
+     * @param request
+     * @return
+     */
     @GetMapping("/record/list")
     @ApiOperation("获取当前用户的考试记录")
     ResultVO<List<ExamRecordVo>> getExamRecordList(HttpServletRequest request) {
@@ -145,6 +185,11 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     * 根据考试记录id获取考试记录详情
+     * @param recordId
+     * @return
+     */
     @GetMapping("/record/detail/{recordId}")
     @ApiOperation("根据考试记录id获取考试记录详情")
     ResultVO<RecordDetailVo> getExamRecordDetail(@PathVariable String recordId) {

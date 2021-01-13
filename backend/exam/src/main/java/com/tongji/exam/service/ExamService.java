@@ -74,6 +74,7 @@ public interface ExamService {
 
     /**
      * 根据用户提交的作答信息进行判分
+
      * @param userId 用户id
      * @param examId 考试Id
      * @param answersMap 答案映射
@@ -83,14 +84,26 @@ public interface ExamService {
 
     /**
      * 根据用户id获取此用户的所有考试信息
+     *
      * @param userId 用户id
-     * @return 用户所有的考试信息
+     * @return 该用户的所有考试记录
      */
     List<ExamRecordVo> getExamRecordList(String userId);
 
-    //获取指定某次考试记录的详情
+    /**
+     * 获取指定某次考试记录的详情
+     *
+     * @param recordId 考试记录的id
+     * @return 考试详情
+     */
     RecordDetailVo getRecordDetail(String recordId);
 
-    //更新考试
+    /**
+     * 更新考试
+     *
+     * @param examVo 获取所有考试的接口中返回的考试信息结构
+     * @param userId 当前的用户
+     * @return 更新后的考试详情
+     */
     Exam update(ExamVo examVo, String userId);
 }

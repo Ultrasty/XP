@@ -143,6 +143,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
     /**
      * 获取用户信息
      * @param userId 用户id
