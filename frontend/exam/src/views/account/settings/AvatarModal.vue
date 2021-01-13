@@ -58,13 +58,14 @@ export default {
       previews: {}
     }
   },
-  mounted (){
+  mounted () {
+    // eslint-disable-next-line no-undef
     getInfo()
-      .then(res =>{
-        if(res.code === 0) {
+      .then(res => {
+        if (res.code === 0) {
           this.InfoDetail = res.data
           return res.data
-        }else{
+        } else {
           this.$notification.error({
             message: '获取个人信息失败',
             description: res.message

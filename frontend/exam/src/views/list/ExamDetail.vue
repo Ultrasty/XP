@@ -8,8 +8,8 @@
         <span style="font-size:15px;">{{ examDetail.exam.examDescription }} </span>
       </span>
       <span style="float: right;">
-        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时:{{auth_min}}分 {{auth_sec}}秒 </span>
-         <!-- <a-button type="danger" ghost style="margin-right: 20px;" @click="Count()">开始</a-button> -->
+        <span style="margin-right: 60px; font-size: 20px" v-if="examDetail.exam">考试限时：{{ examDetail.exam.examTimeLimit }}分钟 这里是倒计时:{{ auth_min }}分 {{ auth_sec }}秒 </span>
+        <!-- <a-button type="danger" ghost style="margin-right: 20px;" @click="Count()">开始</a-button> -->
         <a-button type="danger" ghost style="margin-right: 60px;" @click="finishExam()">交卷</a-button>
         <a-avatar class="avatar" size="small" :src="avatar()"/>
         <span style="margin-left: 12px">{{ nickname() }}</span>
@@ -124,24 +124,24 @@ export default {
             description: res.msg
           })
         }
-      })  
+      })
   },
   methods: {
     // 从全局变量中获取用户昵称和头像,
-    ...mapGetters(['nickname', 'avatar']),  
+    ...mapGetters(['nickname', 'avatar']),
     // 倒计时函数
     Count (examDetail) {
-      var auth_time = examDetail.exam.examTimeLimit * 60
-      this.auth_min = auth_time / 60
-      this.auth_sec = auth_time % 60
-      var auth_timetimer = setInterval(() => {
-        auth_time--
-        var min = auth_time / 60;
+      var authTime = examDetail.exam.examTimeLimit * 60
+      this.auth_min = authTime / 60
+      this.auth_sec = authTime % 60
+      var authTimetimer = setInterval(() => {
+        authTime--
+        var min = authTime / 60
         this.auth_min = parseInt(min)
-        this.auth_sec = auth_time % 60
-        if (auth_time <= 1) {
+        this.auth_sec = authTime % 60
+        if (authTime <= 1) {
           this.finishExam()
-          clearInterval(auth_timetimer)
+          clearInterval(authTimetimer)
         }
       }, 1000)
     },
