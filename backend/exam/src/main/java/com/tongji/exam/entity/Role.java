@@ -16,8 +16,6 @@ public class Role {
     private String roleName;
     private String roleDescription;
     private String roleDetail;
-    /**
-     * 角色所能访问的页面的主键集合(用-连接起来字符串)
-     */
+    //角色所能访问的页码集合
     private String rolePageIds;
 }

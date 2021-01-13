@@ -21,36 +21,70 @@ import java.io.IOException;
 @Slf4j
 public class UploadDownloadController {
 
+    /**
+     * 单文件上传,可以同时传入参数
+     * @param dir
+     * @param uploadfile
+     * @return
+     */
     @ApiOperation("单文件上传,可以同时传入参数")
     @PostMapping("/api/upload/singleAndparas")
     public String uploadFileSingle(@RequestParam("dir") String dir, @RequestParam("file") MultipartFile uploadfile) {
         return FileTransUtil.uploadFile(uploadfile, dir);
     }
 
+    /**
+     * 单文件上传,支持同时传入文件读取模式参数
+     * @param model
+     * @return
+     */
     @ApiOperation("单文件上传,支持同时传入文件读取模式参数")
     @PostMapping("/upload/single/model")
     public String singleUploadFileModel(@ModelAttribute("model") UploadModel2 model) {
         return FileTransUtil.uploadFile(model.getFile(), model.getDir());
     }
 
+    /**
+     * 多文件上传,支持同时传入参数
+     * @param dir
+     * @param uploadfiles
+     * @return
+     */
     @ApiOperation("多文件上传,支持同时传入参数")
     @PostMapping("upload/multiAndparas")
     public String uploadFileMulti(@RequestParam("dir") String dir, @RequestParam("files") MultipartFile[] uploadfiles) {
         return FileTransUtil.uploadFiles(uploadfiles, dir);
     }
 
+    /**
+     * 多文件上传,支持同时传入参数
+     * @param model
+     * @return
+     */
     @ApiOperation("多文件上传,支持同时传入参数")
     @PostMapping(value = "/upload/multi/model")
     public String multiUploadFileModel(@ModelAttribute(("model")) UploadModel model) {
         return FileTransUtil.uploadFiles(model.getFiles(), model.getDir());
     }
 
+    /**
+     * Get下载文件
+     * @param filePath
+     * @return
+     * @throws IOException
+     */
     @ApiOperation("Get下载文件")
     @GetMapping(value = "/download/get")
     public ResponseEntity<InputStreamResource> downloadFileGet(@RequestParam String filePath) throws IOException {
         return FileTransUtil.downloadFile(filePath);
     }
 
+    /**
+     * Post下载文件
+     * @param downloadQo
+     * @return
+     * @throws IOException
+     */
     @ApiOperation("Post下载文件")
     @PostMapping(value = "/download/post")
     public ResponseEntity<InputStreamResource> downloadFilePost(@RequestBody DownloadQo downloadQo) throws IOException {

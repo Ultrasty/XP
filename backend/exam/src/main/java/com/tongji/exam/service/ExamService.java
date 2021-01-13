@@ -64,20 +64,47 @@ public interface ExamService {
      */
     List<ExamCardVo> getExamCardList();
 
-    //根据考试的id获取考试的详情
+    /**
+     * 根据考试的id获取考试的详情
+     *
+     * @param id exam表的主键
+     * @return 考试详情的封装的VO对象
+     */
     ExamDetailVo getExamDetail(String id);
 
-    //根据用户提交的作答信息进行判分
+    /**
+     * 根据用户提交的作答信息进行判分
+     *
+     * @param userId     考试人
+     * @param examId     参与的考试
+     * @param answersMap 作答情况
+     * @return 本次考试记录
+     */
     ExamRecord judge(String userId, String examId, HashMap<String, List<String>> answersMap);
 
 
-     //根据用户id获取此用户的所有考试信息
-
+    /**
+     * 根据用户id获取此用户的所有考试信息
+     *
+     * @param userId 用户id
+     * @return 该用户的所有考试记录
+     */
     List<ExamRecordVo> getExamRecordList(String userId);
 
-    //获取指定某次考试记录的详情
+    /**
+     * 获取指定某次考试记录的详情
+     *
+     * @param recordId 考试记录的id
+     * @return 考试详情
+     */
     RecordDetailVo getRecordDetail(String recordId);
 
-    //更新考试
+    /**
+     * 更新考试
+     *
+     * @param examVo 获取所有考试的接口中返回的考试信息结构
+     * @param userId 当前的用户
+     * @return 更新后的考试详情
+     */
     Exam update(ExamVo examVo, String userId);
 }

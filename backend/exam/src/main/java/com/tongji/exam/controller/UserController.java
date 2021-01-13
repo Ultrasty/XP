@@ -36,6 +36,11 @@ public class UserController {
     @Autowired
     RedisTemplate<String,String> redisTemplate;
 
+    /**
+     * 注册
+     * @param registerDTO
+     * @return
+     */
     @PostMapping("/register")
     @ApiOperation("注册")
     ResultVO<User> register(@RequestBody RegisterDTO registerDTO) {
@@ -51,6 +56,11 @@ public class UserController {
         return resultVO;
     }
 
+    /**
+     * 根据用户名或邮箱登录,登录成功返回token
+     * @param loginQo
+     * @return
+     */
     @PostMapping("/login")
     @ApiOperation("根据用户名或邮箱登录,登录成功返回token")
     ResultVO<String> login(@RequestBody LoginQo loginQo) { // 这里不用手机号是因为手机号和用户名难以进行格式区分，而用户名和
@@ -67,6 +77,11 @@ public class UserController {
         return resultVO;
     }
 
+    /**
+     * 获取用户信息
+     * @param request
+     * @return
+     */
     @GetMapping("/user-info")
     @ApiOperation("获取用户信息")
     ResultVO<UserVo> getUserInfo(HttpServletRequest request) {
@@ -75,6 +90,11 @@ public class UserController {
         return new ResultVO<>(ResultEnum.GET_INFO_SUCCESS.getCode(), ResultEnum.GET_INFO_SUCCESS.getMessage(), userVo);
     }
 
+    /**
+     * 获取用户的详细信息，包括个人信息页面和操作权限
+     * @param request
+     * @return
+     */
     @GetMapping("/info")
     @ApiOperation("获取用户的详细信息，包括个人信息页面和操作权限")
     ResultVO<UserInfoVo> getInfo(HttpServletRequest request) {
@@ -95,6 +115,11 @@ public class UserController {
         return "用户id：" + userId + "\n用户名：" + username;
     }
 
+    /**
+     * 获取短信验证码
+     * @param registerDTO
+     * @return
+     */
     @PostMapping("/getSmsCaptcha")
     @ApiOperation("获取短信验证码")
     String getSmsCaptcha(@RequestBody RegisterDTO registerDTO){
@@ -130,6 +155,10 @@ public class UserController {
         }
     }
 
+    /**
+     * 产生验证码
+     * @return
+     */
     public String getLinkNo() {
         // 用字符数组的方式随机
         String model = "01234567890";
@@ -142,6 +171,12 @@ public class UserController {
         return sb.toString();
     }
 
+    /**
+     * 修改用户信息
+     * @param userInfoQo
+     * @param request
+     * @return
+     */
     @PostMapping("/user-info/update")
     @ApiOperation("修改用户信息")
     String updateUserInfo(@RequestBody UserInfoQo userInfoQo,HttpServletRequest request){
