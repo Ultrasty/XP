@@ -134,7 +134,6 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
     @Override
     public UserVo getUserInfo(String userId) {
         User user = userRepository.findById(userId).orElse(null);

@@ -6,7 +6,6 @@ import com.tongji.exam.service.ExamService;
 import com.tongji.exam.vo.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +20,10 @@ public class ExamController {
     @Autowired
     private ExamService examService;
 
+    /**
+     * 获取全部考试列表
+     * @return
+     */
     @ApiOperation("获取全部考试的列表")
     @GetMapping("/all")
     ResultVO<List<ExamVo>> getExamAll() {
@@ -37,7 +40,7 @@ public class ExamController {
     }
 
     @GetMapping("/question/type/list")
-    @ApiOperation("获取问题列表，按照单选、多选和判断题分类返回")
+    @ApiOperation("获取问题分类返回")
     ResultVO<ExamQuestionTypeVo> getExamQuestionTypeList() {
         // 获取问题的分类列表
         ResultVO<ExamQuestionTypeVo> resultVO;
@@ -67,6 +70,12 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     *
+     * @param examVo
+     * @param request
+     * @return
+     */
     @PostMapping("/update")
     @ApiOperation("更新考试")
     ResultVO<Exam> updateExam(@RequestBody ExamVo examVo, HttpServletRequest request) {
@@ -83,6 +92,10 @@ public class ExamController {
         return resultVO;
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping("/card/list")
     @ApiOperation("获取考试列表，适配前端卡片列表")
     ResultVO<List<ExamCardVo>> getExamCardList() {

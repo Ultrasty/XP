@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * created by kz on
- */
+
 @RestController
 @Api(tags = "Question APIs")
 @RequestMapping("/exam")

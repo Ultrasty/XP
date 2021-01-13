@@ -29,7 +29,7 @@ public class Swagger2Config {
                 .modelRef(new ModelRef("string")).parameterType("header")
                 //header中的ticket参数非必填，传空也可以
                 .required(false).build();
-        //根据每个方法名也知道当前方法在设置什么参数
+        //根据每个方法名知道当前方法在设置什么参数
         pars.add(ticketPar.build());
 
         return new Docket(DocumentationType.SWAGGER_2)
