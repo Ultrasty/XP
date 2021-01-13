@@ -105,9 +105,9 @@
 </template>
 
 <script>
-import {mixinDevice} from '../../utils/mixin.js'
-import {getSmsCaptcha} from '../../api/login'
-import {register} from '../../api/user'
+import { mixinDevice } from '../../utils/mixin.js'
+import { getSmsCaptcha } from '../../api/login'
+import { register } from '../../api/user'
 
 const levelNames = {
   0: '低',
@@ -131,7 +131,7 @@ export default {
   name: 'Register',
   components: {},
   mixins: [mixinDevice],
-  data() {
+  data () {
     return {
       form: this.$form.createForm(this),
 
@@ -147,19 +147,19 @@ export default {
     }
   },
   computed: {
-    passwordLevelClass() {
+    passwordLevelClass () {
       return levelClass[this.state.passwordLevel]
     },
-    passwordLevelName() {
+    passwordLevelName () {
       return levelNames[this.state.passwordLevel]
     },
-    passwordLevelColor() {
+    passwordLevelColor () {
       return levelColor[this.state.passwordLevel]
     }
   },
   methods: {
 
-    handlePasswordLevel(rule, value, callback) {
+    handlePasswordLevel (rule, value, callback) {
       let level = 0
 
       // 判断这个字符串中有没有数字
@@ -189,7 +189,7 @@ export default {
       }
     },
 
-    handlePasswordCheck(rule, value, callback) {
+    handlePasswordCheck (rule, value, callback) {
       const password = this.form.getFieldValue('password')
       console.log('value', value)
       if (value === undefined) {
@@ -201,7 +201,7 @@ export default {
       callback()
     },
 
-    handlePhoneCheck(rule, value, callback) {
+    handlePhoneCheck (rule, value, callback) {
       console.log('handlePhoneCheck, rule:', rule)
       console.log('handlePhoneCheck, value', value)
       console.log('handlePhoneCheck, callback', callback)
@@ -209,7 +209,7 @@ export default {
       callback()
     },
 
-    handlePasswordInputClick() {
+    handlePasswordInputClick () {
       if (!this.isMobile()) {
         this.state.passwordLevelChecked = true
         return
@@ -217,16 +217,16 @@ export default {
       this.state.passwordLevelChecked = false
     },
 
-    handleSubmit() {
-      const {form: {validateFields}, $router, $message} = this
-      validateFields({force: true}, (err, values) => {
+    handleSubmit () {
+      const { form: { validateFields }, $router, $message } = this
+      validateFields({ force: true }, (err, values) => {
         if (!err) {
           // 在这里进行Rest请求，params参数如右：{email: "1648266192@qq.com", password: "123456", password2: "123456", mobile: "17601324488", captcha: "69076"}
           register(values).then(res => {
             // 成功就跳转到结果页面
             console.log(res)
             if (res.msg === '注册成功') {
-              $router.push({name: 'registerResult', params: {...values}})
+              $router.push({ name: 'registerResult', params: { ...values } })
             } else {
               this.$notification['error']({
                 message: '提示',
@@ -244,9 +244,9 @@ export default {
 
     getCaptcha (e) {
       e.preventDefault()
-      const { form: { validateFields }, state, $message, $notification} = this
+      const { form: { validateFields }, state, $message, $notification } = this
 
-      validateFields(['mobile'], {force: true},
+      validateFields(['mobile'], { force: true },
         (err, values) => {
           if (!err) {
             state.smsSendBtn = true
@@ -261,7 +261,7 @@ export default {
 
             const hide = $message.loading('验证码发送中..', 0)
 
-            getSmsCaptcha({mobile: values.mobile}).then(res => {
+            getSmsCaptcha({ mobile: values.mobile }).then(res => {
               setTimeout(hide, 2500)
               $notification['success']({
                 message: '提示',
@@ -279,7 +279,8 @@ export default {
         }
       )
     },
-    requestFailed(err) {
+    // eslint-disable-next-line handle-callback-err
+    requestFailed (err) {
       this.$notification['success']({
         message: '提示',
         description: '验证码已发送',
@@ -289,7 +290,7 @@ export default {
     }
   },
   watch: {
-    'state.passwordLevel'(val) {
+    'state.passwordLevel' (val) {
       console.log(val)
     }
   }

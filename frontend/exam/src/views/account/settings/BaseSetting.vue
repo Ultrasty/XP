@@ -7,34 +7,34 @@
           <a-form-item
             label="昵称"
           >
-          <a-input
-            size="large"
-            type="text"
-            placeholder="请输入昵称"
-            v-decorator="['userNickname', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.name}]"
-          ></a-input>
+            <a-input
+              size="large"
+              type="text"
+              placeholder="请输入昵称"
+              v-decorator="['userNickname', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.name}]"
+            ></a-input>
           </a-form-item>
-          
+
           <a-form-item
             label="个性签名"
           >
-          <a-input
-            size="large"
-            type="text"
-            placeholder="请输入个性签名"
-            v-decorator="['userDescription', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.welcome}]"
-          ></a-input>
+            <a-input
+              size="large"
+              type="text"
+              placeholder="请输入个性签名"
+              v-decorator="['userDescription', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.welcome}]"
+            ></a-input>
           </a-form-item>
 
           <a-form-item
             label="电子邮件"
           >
-          <a-input
-            size="large"
-            type="text"
-            placeholder="请输入电子邮件"
-            v-decorator="['userEmail', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.email}]"
-          ></a-input>
+            <a-input
+              size="large"
+              type="text"
+              placeholder="请输入电子邮件"
+              v-decorator="['userEmail', {rules: [{ required: true }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.email}]"
+            ></a-input>
           </a-form-item>
 
           <a-form-item
@@ -42,11 +42,11 @@
             :required="false"
           >
             <a-input
-            size="large"
-            type="text"
-            placeholder="请输入新密码"
-            v-decorator="['userPassword', {rules: [{ required: false }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.password}]"
-          ></a-input>
+              size="large"
+              type="text"
+              placeholder="请输入新密码"
+              v-decorator="['userPassword', {rules: [{ required: false }], validateTrigger: ['change', 'blur'], initialValue: InfoDetail.password}]"
+            ></a-input>
           </a-form-item>
 
           <a-form-item
@@ -54,7 +54,6 @@
           >
             <div id="summernote-avatar-create"></div>
           </a-form-item>
-
 
           <a-form-item>
             <a-button type="primary" @click="HandleSubmit">提交</a-button>
@@ -76,7 +75,7 @@
 import AvatarModal from './AvatarModal'
 import '../../../plugins/summernote'
 import $ from 'jquery'
-import {updateInfo , getInfo} from '../../../api/login'
+import { updateInfo, getInfo } from '../../../api/login'
 
 export default {
   components: {
@@ -85,7 +84,7 @@ export default {
   data () {
     return {
       // cropper
-      userAvatar: undefined,  
+      userAvatar: undefined,
       preview: {},
       option: {
         img: '/avatar2.jpg',
@@ -100,23 +99,23 @@ export default {
         fixedBox: true,
         // 开启宽度和高度比例
         fixed: true,
-        fixedNumber: [1, 1],
+        fixedNumber: [1, 1]
       },
-      InfoDetail : {},
+      InfoDetail: {},
       form: this.$form.createForm(this)
     }
   },
   updated () {
     this.initSummernote()
   },
-  mounted (){
+  mounted () {
     getInfo()
-      .then(res =>{
-        if(res.code === 0) {
+      .then(res => {
+        if (res.code === 0) {
           this.InfoDetail = res.data
-          document.getElementById("pic").src = this.InfoDetail.avatar
+          document.getElementById('pic').src = this.InfoDetail.avatar
           return res.data
-        }else{
+        } else {
           this.$notification.error({
             message: '获取个人信息失败',
             description: res.message
@@ -142,27 +141,26 @@ export default {
         ]
       })
     },
-    HandleSubmit (){
+    HandleSubmit () {
       const { form: { validateFields } } = this
-      validateFields((errors, values) =>{
+      validateFields((errors, values) => {
         // values.userAvatar = $('#summernote-avatar-create').summernote('code')
-        if(values.userPassword == ''){
+        if (values.userPassword === '') {
           values.userPassword = null
         }
-        
+
         values.userAvatar = $('#summernote-avatar-create').summernote('code')
-        if (values.userAvatar == '<p><br></p>')
-        {
-          values.userAvatar = "<p><img src=\""+this.InfoDetail.avatar+" \" data-filename=\"image.png\" style=\"width: 15px;\"><br></p>"
+        if (values.userAvatar === '<p><br></p>') {
+          values.userAvatar = '<p><img src="' + this.InfoDetail.avatar + ' " data-filename="image.png" style="width: 15px;"><br></p>'
         }
-        console.log("提交数据到后端")
+        console.log('提交数据到后端')
         console.log(values.userAvatar)
-        if(!errors) {
+        if (!errors) {
           updateInfo(values).then(res => {
-            if(res === 'ok') {
-              this.$notification.success({ 
+            if (res === 'ok') {
+              this.$notification.success({
                 message: '修改成功',
-                description: '修改个人信息成功',
+                description: '修改个人信息成功'
               })
 
               this.visible = false
@@ -174,8 +172,8 @@ export default {
               description: err.message
             })
           })
-        } 
-      } )
+        }
+      })
     }
   }
 }
@@ -195,7 +193,6 @@ export default {
     max-width: 180px;
     border-radius: 50%;
     box-shadow: 0 0 4px #ccc;
-
 
     img, .mask {
       width: 100%;

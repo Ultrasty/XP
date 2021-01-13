@@ -37,9 +37,9 @@ export default {
   name: 'Banner',
   methods: {
     goAnchor (selector) {
-      const anchorEle = document.querySelector(selector);
-      if(anchorEle){
-        anchorEle.scrollIntoView(true);
+      const anchorEle = document.querySelector(selector)
+      if (anchorEle) {
+        anchorEle.scrollIntoView(true)
       }
     }
   }

@@ -45,7 +45,7 @@ export default {
     // 从后端数据获取考试列表，适配前端卡片
     getExamCardList().then(res => {
       console.log(res)
-      if (res.code == 0) {
+      if (res.code === 0) {
         this.dataSource = res.data
       } else {
         this.$notification.error({
