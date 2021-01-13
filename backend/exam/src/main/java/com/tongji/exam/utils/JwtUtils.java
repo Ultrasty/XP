@@ -17,7 +17,7 @@ public class JwtUtils {
      */
     private static final long EXPIRE = 1000 * 60 * 60 * 24;
 
-    private static final String APP_SECRET = "";
+    private static final String APP_SECRET = "jixiankaifa";
 
     public static String genJsonWebToken(User user) {
         if (user == null || user.getUserId() == null || user.getUserUsername() == null || user.getUserAvatar() == null) {
