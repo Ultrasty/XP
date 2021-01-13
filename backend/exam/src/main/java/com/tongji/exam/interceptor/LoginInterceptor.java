@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
+/**
+ * 拦截器，用于请求鉴权
+ */
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 

@@ -10,14 +10,15 @@ import java.util.List;
 public interface ExamService {
     /**
      * 获取所有的问题列表
+     * @return 所有的问题列表
      */
     List<QuestionVo> getQuestionAll();
 
     QuestionVo updateQuestion(QuestionVo questionVo);
 
     /**
-     * 问题创建
-
+     * 创建题目
+     * @param questionCreateVo
      */
     void questionCreate(QuestionCreateVo questionCreateVo);
 
@@ -64,15 +65,27 @@ public interface ExamService {
      */
     List<ExamCardVo> getExamCardList();
 
-    //根据考试的id获取考试的详情
+    /**
+     * 根据考试的id获取考试的详情
+     * @param id 考试id
+     * @return 考试详情
+     */
     ExamDetailVo getExamDetail(String id);
 
-    //根据用户提交的作答信息进行判分
+    /**
+     * 根据用户提交的作答信息进行判分
+     * @param userId 用户id
+     * @param examId 考试Id
+     * @param answersMap 答案映射
+     * @return
+     */
     ExamRecord judge(String userId, String examId, HashMap<String, List<String>> answersMap);
 
-
-     //根据用户id获取此用户的所有考试信息
-
+    /**
+     * 根据用户id获取此用户的所有考试信息
+     * @param userId 用户id
+     * @return 用户所有的考试信息
+     */
     List<ExamRecordVo> getExamRecordList(String userId);
 
     //获取指定某次考试记录的详情

@@ -61,7 +61,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UpCodeRepository upCodeRepository;
 
-
+    /**
+     * 用户注册
+     * @param registerDTO 用户注册所需的信息类
+     * @return 注册成功的用户对象
+     */
     @Override
     public User register(RegisterDTO registerDTO) {
         try {
@@ -109,6 +113,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 用户登录
+     * @param loginQo
+     * @return
+     */
     @Override
     public String login(LoginQo loginQo) {
         User user;
@@ -134,7 +143,11 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
+    /**
+     * 获取用户信息
+     * @param userId 用户id
+     * @return 用户Vo
+     */
     @Override
     public UserVo getUserInfo(String userId) {
         User user = userRepository.findById(userId).orElse(null);
@@ -143,7 +156,11 @@ public class UserServiceImpl implements UserService {
         BeanUtils.copyProperties(user, userVo);
         return userVo;
     }
-
+    /**
+     * 获取用户信息
+     * @param userId
+     * @return
+     */
     @Override
     public UserInfoVo getInfo(String userId) {
         User user = userRepository.findById(userId).orElse(null);
@@ -199,7 +216,12 @@ public class UserServiceImpl implements UserService {
         userInfoVo.setRoleVo(roleVo);
         return userInfoVo;
     }
-
+    /**
+     * 更新个人信息
+     * @param userInfoQo 前端传来的要修改的用户信息
+     * @param user_id 用户id
+     * @return 更新结果，成功返回ok，失败返回null
+     */
     @Override
     public String updateInfo(UserInfoQo userInfoQo,String user_id) {
         User user=userRepository.findByUserId(user_id);

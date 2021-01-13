@@ -69,7 +69,13 @@ public class FileUtils {
         return outStream.toByteArray();
     }
 
-    // 创建临时文件
+
+    /**
+     * 创建临时文件
+     * @param b
+     * @param suffix
+     * @return
+     */
     private static File getFileFromBytes(byte[] b, String suffix) {
         BufferedOutputStream stream = null;
         File file = null;
