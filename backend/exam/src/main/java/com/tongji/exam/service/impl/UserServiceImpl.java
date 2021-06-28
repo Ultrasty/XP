@@ -25,7 +25,6 @@ import com.tongji.exam.vo.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -40,8 +39,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    RedisTemplate<String,String> redisTemplate;
 
     @Autowired
     RoleRepository roleRepository;
@@ -96,16 +93,9 @@ public class UserServiceImpl implements UserService {
             user.setCreateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUpdateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUserPhone(registerDTO.getMobile());
-            String code=redisTemplate.opsForValue().get(registerDTO.getMobile());
-            if(registerDTO.getCaptcha().equals(code))
-            {
-                System.out.println(registerDTO.getCaptcha()+"----------"+"code");
-                userRepository.save(user);
-                System.out.println(user);
-                return user;
-            }
-            else
-                return null;
+            userRepository.save(user);
+            System.out.println(user);
+            return user;
         } catch (Exception e) {
             e.printStackTrace(); // 用户已经存在或验证码错误
             // 出异常，返回null，表示注册失败
