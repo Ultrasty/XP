@@ -1,20 +1,33 @@
 spring:
+  application:
+    name: service-exam
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/exam?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-  redis:
-    host: 139.224.49.108
-    port: 6379
-    jedis:
-      pool:
-        max-active: 8
-        max-wait: 1
-        max-idle: 10
-        min-idle: 0
-    database: 2
+    password: root123456
+    url: jdbc:mysql://www.csystd.cn:3306/exam?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+  jpa:
+    # 调试的时候用，打印SQL语句
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  servlet:
+    multipart:
+      max-file-size: 100MB # 最大支持文件大小
+      max-request-size: 100MB # 最大支持请求大小
+user:
+  default:
+    # 用户名默认前缀
+    username: user
+    # 用户默认头像
+    avatar: http://d.lanrentuku.com/down/png/1904/business_avatar/8_avatar_2754583.png
 
 server:
+  port: 9527
   servlet:
     context-path: /api
+
+# 拦截器相关的配置
+interceptors:
+  # 不需要进行拦截的接口地址，用逗号隔开
+  auth-ignore-uris: ${server.servlet.context-path}/user/register,${server.servlet.context-path}/user/login,${server.servlet.context-path}/user/getSmsCaptcha
