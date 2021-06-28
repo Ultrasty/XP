@@ -87,11 +87,13 @@ public class UserServiceImpl implements UserService {
             // 设置描述信息，随便设置段默认的
             user.setUserDescription("welcome to online exam system");
             // 需要验证这个邮箱是不是已经存在：数据字段已经设置unique了，失败会异常地
+
             user.setUserEmail(registerDTO.getEmail());
             // 需要验证手机号是否已经存在：数据字段已经设置unique了，失败会异常地
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             user.setCreateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
             user.setUpdateTime(simpleDateFormat.parse(simpleDateFormat.format(new Date())));
+
             user.setUserPhone(registerDTO.getMobile());
             userRepository.save(user);
             System.out.println(user);
